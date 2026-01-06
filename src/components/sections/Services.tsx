@@ -12,7 +12,6 @@ export default function Services() {
       className="relative bg-background"
       aria-labelledby="services-title"
       id="services"
-
     >
       {/* Glow sutil */}
       <div className="absolute inset-0 pointer-events-none">
@@ -38,7 +37,6 @@ export default function Services() {
         {/* Cards */}
         <div className="grid gap-8 md:grid-cols-3">
 
-          {/* Desenvolvimento */}
           <div
             className="
               group relative bg-surface border border-border rounded-2xl p-8
@@ -77,8 +75,6 @@ export default function Services() {
               <ArrowRight size={16} />
             </Link>
           </div>
-
-          {/* Marketing */}
           <div
             className="
               group relative bg-surface border border-border rounded-2xl p-8
@@ -118,7 +114,6 @@ export default function Services() {
             </Link>
           </div>
 
-          {/* Copy & Design */}
           <div
             className="
               group relative bg-surface border border-border rounded-2xl p-8
@@ -147,7 +142,7 @@ export default function Services() {
             </ul>
 
             <Link
-              to="/servicos"
+              to="/servicos/"
               className="
                 inline-flex items-center gap-2 text-primary font-medium
                 group-hover:gap-3 transition-all
@@ -159,7 +154,6 @@ export default function Services() {
           </div>
 
         </div>
-
       </div>
     </section>
   )

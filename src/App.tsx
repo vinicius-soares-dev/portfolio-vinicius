@@ -11,6 +11,12 @@ import Services from "./pages/Services"
 import Portfolio from "./pages/Portfolio"
 import WhatsAppButton from "./components/WhatsAppButton"
 import Contact from "./pages/Contact"
+import TrafficPaid from "./pages/TrafficPaid"
+import ProfessionalSites from "./pages/ProfessionalSites"
+import WebSystems from "./pages/WebSystems"
+import Copywriting from "./pages/Copywriting"
+import DesignEstrategico from "./pages/DesignEstrategico"
+import SeoPerformance from "./pages/SeoPerformance"
 
 export default function App() {
   return (
@@ -19,7 +25,14 @@ export default function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/servicos" element={<Services />} />
+          <Route path="/servicos/trafego-pago" element={<TrafficPaid />} />
+          <Route path="/servicos/sites-profissionais" element={<ProfessionalSites />} />
+          <Route path="/servicos/copywriting" element={<Copywriting />} />
+          <Route path="/servicos/sistemas-web" element={<WebSystems />} />
+          <Route path="/servicos/design" element={<DesignEstrategico />} />
+          <Route path="/servicos/seo-e-perfomance" element={<SeoPerformance />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/contato" element={<Contact />} />
           <Route path="/blog" element={<Blog />} />

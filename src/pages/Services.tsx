@@ -44,6 +44,7 @@ const services = [
     title: "Sites Profissionais",
     desc: "Sites rápidos, modernos e focados em conversão.",
     cta: "Quero um site profissional",
+    url: "sites-profissionais",
     items: ["Design exclusivo", "SEO técnico", "Alta performance"]
   },
   {
@@ -51,6 +52,7 @@ const services = [
     title: "Sistemas Web",
     desc: "Plataformas sob medida para automatizar processos.",
     cta: "Quero um sistema sob medida",
+    url: "sistemas-web",
     items: ["Painel administrativo", "Escalável", "Segurança"]
   },
   {
@@ -58,6 +60,7 @@ const services = [
     title: "Tráfego Pago",
     desc: "Campanhas focadas em leads e vendas.",
     cta: "Quero vender com tráfego pago",
+    url: "trafego-pago",
     items: ["Google Ads", "Meta Ads", "Otimização contínua"]
   },
   {
@@ -65,6 +68,7 @@ const services = [
     title: "Copywriting",
     desc: "Textos que guiam, convencem e convertem.",
     cta: "Quero uma copy que converte",
+    url: "copywriting",
     items: ["Copy para páginas", "Funis", "CTAs estratégicos"]
   },
   {
@@ -72,13 +76,15 @@ const services = [
     title: "Design Estratégico",
     desc: "Visual alinhado à marca e à conversão.",
     cta: "Quero um design profissional",
+    url: "design",
     items: ["UI premium", "UX", "Branding digital"]
   },
   {
     icon: Gauge,
     title: "SEO & Performance",
     desc: "Posicionamento e velocidade como prioridade.",
-    cta: "Quero aparecer no Google",
+    cta: "Quero melhorar meu SEO",
+    url: "seo-e-perfomance",
     items: ["Core Web Vitals", "SEO on-page", "Monitoramento"]
   }
 ]
@@ -153,14 +159,18 @@ export default function Services() {
                   key={i}
                   variants={item}
                   whileHover={{ y: -10 }}
+                  className="group relative rounded-3xl border border-border bg-surface p-8 overflow-hidden"
                 >
+                  {/* Glow no hover */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition rounded-3xl bg-gradient-to-br from-primary/10 via-transparent to-transparent" />
 
-                  <div className="relative z-10">
+                  <div className="relative z-10 flex flex-col h-full">
+                    {/* Ícone */}
                     <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
                       <Icon className="text-primary" size={24} />
                     </div>
 
+                    {/* Conteúdo */}
                     <h3 className="text-2xl font-bold mb-4">
                       {service.title}
                     </h3>
@@ -177,6 +187,26 @@ export default function Services() {
                         </li>
                       ))}
                     </ul>
+
+                    {/* CTA */}
+                    <div className="mt-8">
+                      <a
+                        href={`/servicos/${service.url}`}
+                        target="_self"
+                        rel="noopener noreferrer"
+                        className="
+                          inline-flex items-center gap-2
+                          text-primary font-medium
+                          opacity-90
+                          transition-all
+                          group-hover:gap-3
+                          group-hover:opacity-100
+                        "
+                      >
+                        {service.cta}
+                        <TrendingUp size={16} />
+                      </a>
+                    </div>
                   </div>
                 </motion.article>
               )
