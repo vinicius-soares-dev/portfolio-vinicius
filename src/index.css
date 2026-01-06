@@ -9,3 +9,8 @@ html {
 body {
   @apply bg-background text-textPrimary antialiased;
 }
+
+html, body {
+  overflow-x: hidden;
+}
+

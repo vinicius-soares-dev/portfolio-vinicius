@@ -1,3 +1,4 @@
+import AboutMe from "../components/sections/About"
 import FinalCTA from "../components/sections/FinalCTA"
 import Hero from "../components/sections/Hero"
 import ProblemSolution from "../components/sections/ProblemSolutions"
@@ -11,6 +12,7 @@ export default function Home() {
     <>
       <Hero />
       <ProblemSolution />
+      <AboutMe />
       <Services  />
       <TargetAudience />
       <Projects />

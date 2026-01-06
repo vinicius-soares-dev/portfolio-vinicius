@@ -1,54 +1,163 @@
-export default function About() {
+import { useEffect, useRef } from "react"
+import { GraduationCap, Cloud, Code2, BarChart3 } from "lucide-react"
+
+export default function AboutMe() {
+  const carouselRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const carousel = carouselRef.current
+    if (!carousel) return
+
+    if (window.innerWidth >= 768) return // só mobile
+
+    const cards = carousel.children
+    if (!cards.length) return
+
+    let index = 0
+    const CARD_WIDTH = 280 + 24 // largura do card + gap
+    const INTERVAL_TIME = 2600 // tempo entre avanços (ajuste aqui)
+
+    const interval = setInterval(() => {
+      index++
+
+      if (index >= cards.length) {
+        index = 0
+      }
+
+      carousel.scrollTo({
+        left: index * CARD_WIDTH,
+        behavior: "smooth",
+      })
+    }, INTERVAL_TIME)
+
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <section
-      className="bg-white"
+      className="relative overflow-hidden bg-background"
       aria-labelledby="about-title"
     >
-      <div className="max-w-7xl mx-auto px-4 py-20">
+      <div className="absolute -top-32 -right-32 w-[400px] h-[400px] bg-primary/10 rounded-full blur-3xl" />
 
-        <div className="grid gap-12 md:grid-cols-2 items-center">
+      <div className="relative max-w-7xl mx-auto px-4 py-28">
+        <div className="grid gap-16 md:grid-cols-2 items-center">
+          {/* ================= IMAGEM ================= */}
+          <div className="relative flex justify-center">
+            <div className="relative">
+              <div className="absolute inset-0 bg-primary/20 blur-2xl rounded-full scale-110" />
 
-          {/* Texto */}
+              <img
+                src="https://xinjbrptsfbzvdtczehu.supabase.co/storage/v1/object/public/project-images/avatars/user-23/avatar.webp"
+                alt="Vinicius Soares - Desenvolvedor Full Stack"
+                className="
+                  relative z-10
+                  w-64 h-64 md:w-80 md:h-80
+                  object-cover
+                  rounded-full
+                  border-4 border-border
+                  shadow-xl
+                "
+              />
+            </div>
+          </div>
+
+          {/* ================= TEXTO ================= */}
           <div>
             <h2
               id="about-title"
-              className="text-3xl md:text-4xl font-bold text-black mb-6"
+              className="text-3xl md:text-4xl font-bold text-textPrimary mb-6"
             >
               Quem está por trás dos projetos
             </h2>
 
-            <p className="text-gray-700 mb-4">
-              Sou <strong>Vinicius Soares</strong>, desenvolvedor Full Stack
-              com mais de <strong>6 anos de experiência</strong> e fundador
-              da <strong>VG Tech Solutions</strong>.
-            </p>
+            <div className="space-y-5 text-textSecondary leading-relaxed">
+              <p>
+                Sou <strong className="text-textPrimary">Vinicius Soares</strong>,
+                desenvolvedor Full Stack e fundador da{" "}
+                <strong className="text-textPrimary">VG Tech Solutions</strong>.
+                Minha trajetória na tecnologia começou com programação,
+                mas evoluiu para algo maior: criar soluções digitais que
+                realmente geram resultado.
+              </p>
 
-            <p className="text-gray-700 mb-4">
-              Atuo criando sites, sistemas e soluções digitais sob medida,
-              sempre com foco em desempenho, clareza e resultado real
-              para o negócio — não apenas em entregar código.
-            </p>
+              <p>
+                Trabalho unindo <strong>desenvolvimento web</strong>,
+                <strong> tráfego pago</strong>, <strong>copy</strong> e
+                <strong> performance</strong>. Não entrego apenas código,
+                entrego estratégia, clareza e escala.
+              </p>
 
-            <p className="text-gray-700 mb-8">
-              Ao longo dos anos, trabalhei com projetos de diferentes
-              segmentos, cuidando de toda a estratégia digital:
-              programação, performance, SEO, copy e conversão.
-            </p>
-
-            <ul className="space-y-3 text-gray-700">
-              <li>✔ Mais de 6 anos desenvolvendo para a web</li>
-              <li>✔ Fundador da VG Tech Solutions</li>
-              <li>✔ Projetos pensados para crescer junto com o negócio</li>
-            </ul>
+              <p>
+                Cada projeto é pensado para conversão, experiência do usuário
+                e crescimento sustentável — seja um site, landing page,
+                e-commerce ou sistema web sob medida.
+              </p>
+            </div>
           </div>
-
-          {/* Placeholder imagem */}
-          <div className="w-full h-96 bg-gray-100 rounded-lg flex items-center justify-center text-gray-400">
-            Sua foto profissional aqui
-          </div>
-
         </div>
 
+        {/* ================= FORMAÇÕES ================= */}
+        <div className="mt-24">
+          <h3 className="text-2xl font-bold text-textPrimary mb-10">
+            Formação & Especializações
+          </h3>
+
+          <div
+            ref={carouselRef}
+            className="
+              flex gap-6 overflow-x-auto pb-4
+              snap-x snap-mandatory
+              scroll-smooth
+              scrollbar-thin scrollbar-thumb-border scrollbar-track-transparent
+            "
+          >
+            {/* Card */}
+            <div className="min-w-[280px] snap-start bg-surface border border-border rounded-2xl p-6">
+              <GraduationCap className="text-primary mb-4" size={28} />
+              <h4 className="font-semibold text-textPrimary mb-2">
+                Ciência da Computação
+              </h4>
+              <p className="text-sm text-textSecondary">
+                Bacharelado com foco em lógica, arquitetura de software
+                e fundamentos sólidos da programação.
+              </p>
+            </div>
+
+            <div className="min-w-[280px] snap-start bg-surface border border-border rounded-2xl p-6">
+              <Code2 className="text-primary mb-4" size={28} />
+              <h4 className="font-semibold text-textPrimary mb-2">
+                Engenharia de Software
+              </h4>
+              <p className="text-sm text-textSecondary">
+                Pós-graduação com foco em boas práticas,
+                escalabilidade, arquitetura e qualidade de código.
+              </p>
+            </div>
+
+            <div className="min-w-[280px] snap-start bg-surface border border-border rounded-2xl p-6">
+              <Cloud className="text-primary mb-4" size={28} />
+              <h4 className="font-semibold text-textPrimary mb-2">
+                Google Cloud & AWS
+              </h4>
+              <p className="text-sm text-textSecondary">
+                Infraestrutura em nuvem, deploy, performance
+                e ambientes escaláveis.
+              </p>
+            </div>
+
+            <div className="min-w-[280px] snap-start bg-surface border border-border rounded-2xl p-6">
+              <BarChart3 className="text-primary mb-4" size={28} />
+              <h4 className="font-semibold text-textPrimary mb-2">
+                Tráfego Pago & Conversão
+              </h4>
+              <p className="text-sm text-textSecondary">
+                Estratégias de Google Ads, funis,
+                CRO e análise de métricas.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   )
