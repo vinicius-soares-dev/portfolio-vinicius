@@ -47,6 +47,7 @@ useEffect(() => {
         {/* MENU DESKTOP */}
         <nav className="hidden md:flex items-center gap-8 text-sm">
           {[
+            { label: "Home", to: "/home" },
             { label: "Serviços", to: "/servicos" },
             { label: "Portfólio", to: "/portfolio" },
             { label: "Blog", to: "/blog" },
