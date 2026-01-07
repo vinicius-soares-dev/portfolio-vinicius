@@ -1,5 +1,75 @@
 const posts = [
   {
+  title: "Por que seu site não gera clientes (e como corrigir isso em 2026)",
+  description: "Descubra por que a maioria dos sites não gera clientes e como corrigir isso em 2026.",
+  date: "2026-01-07",
+  slug: "por-que-seu-site-nao-gera-clientes",
+  category: "tecnologia",
+  content: `
+## Por que muitos sites não geram clientes?
+
+Ter um site bonito não significa gerar resultados. Em 2026, o problema mais comum não é tecnologia, é **estratégia**.
+
+> 💡 A maioria dos sites falha não por falta de investimento, mas por decisões erradas.
+
+---
+
+## Erro 1: Falar de si e não do problema do cliente
+- Textos genéricos
+- Falta de proposta de valor clara
+- Linguagem técnica demais
+
+> 🧠 Sites que convertem falam primeiro da dor do cliente, depois da solução.
+
+---
+
+## Erro 2: Falta de CTA claro
+- “Entre em contato” escondido
+- Muitas opções confusas
+- Nenhuma ação principal
+
+> 🎯 Cada página deve ter um único objetivo.
+
+---
+
+## Erro 3: Site lento ou mal otimizado
+- Imagens pesadas
+- Código sem otimização
+- Hospedagem ruim
+
+> ⚡ Performance impacta diretamente SEO e conversão.
+
+---
+
+## Erro 4: Não acompanhar métricas
+- Não usa Google Analytics
+- Não sabe de onde vem os acessos
+- Não testa melhorias
+
+> 📊 Sem dados, não existe crescimento.
+
+---
+
+## Como corrigir isso na prática
+- Clareza na mensagem
+- Copy estratégica
+- SEO bem feito
+- Performance otimizada
+- Métricas e melhoria contínua
+
+---
+
+## Conclusão
+
+Um site não é um cartão de visita, é uma **máquina de conversão**.
+
+Se o seu site não gera clientes, o problema não é o mercado, é a estratégia.
+
+> 💬 Quer transformar seu site em uma ferramenta de vendas?  
+> [Fale comigo no WhatsApp](https://wa.me/5532999823915)
+`
+},
+  {
     title: "Como criar um site profissional que gera resultados",
     description: "Veja o que realmente importa ao criar um site profissional em 2026.",
     date: "2026-01-05",
@@ -85,81 +155,6 @@ Se você quer criar um site que funcione de verdade, foque no que importa: **cla
 `
   },
 
-    {
-    title: "Por que seu site não gera clientes (e como corrigir isso em 2026)",
-    description: "Descubra por que a maioria dos sites não gera clientes e como corrigir isso em 2026.",
-    date: "2026-01-07",
-    slug: "por-que-seu-site-nao-gera-clientes",
-    category: "tecnologia",
-    content: `
-    ## Por que muitos sites não geram clientes?
-
-
-    Ter um site bonito não significa gerar resultados. Em 2026, o problema mais comum não é tecnologia, é **estratégia**.
-
-    > 💡 A maioria dos sites falha não por falta de investimento, mas por decisões erradas.
-
-    ---
-
-    ## Erro 1: Falar de si e não do problema do cliente
-    - Textos genéricos
-    - Falta de proposta de valor clara
-    - Linguagem técnica demais
-
-    > 🧠 Sites que convertem falam primeiro da dor do cliente, depois da solução.
-
-    ---
-
-    ## Erro 2: Falta de CTA claro
-    - “Entre em contato” escondido
-    - Muitas opções confusas
-    - Nenhuma ação principal
-
-    > 🎯 Cada página deve ter um único objetivo.
-
-    ---
-
-    ## Erro 3: Site lento ou mal otimizado
-    - Imagens pesadas
-    - Código sem otimização
-    - Hospedagem ruim
-
-    > ⚡ Performance impacta diretamente SEO e conversão.
-
-    ---
-
-    ## Erro 4: Não acompanhar métricas
-    - Não usa Google Analytics
-    - Não sabe de onde vem os acessos
-    - Não testa melhorias
-
-    > 📊 Sem dados, não existe crescimento.
-
-    ---
-
-    ## Como corrigir isso na prática
-
-    - Clareza na mensagem
-    - Copy estratégica
-    - SEO bem feito
-    - Performance otimizada
-    - Métricas e melhoria contínua
-
-    ---
-
-    ## Conclusão
-
-    Um site não é um cartão de visita, é uma **máquina de conversão**.
-
-    Se o seu site não gera clientes, o problema não é o mercado, é a estratégia.
-
-    > 💬 Quer transformar seu site em uma ferramenta de vendas?  
-    > [Fale comigo no WhatsApp](https://wa.me/5532999823915)
-
-
-`
-
-  }
 ]
 
 export default posts
