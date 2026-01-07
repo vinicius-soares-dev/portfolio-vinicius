@@ -89,9 +89,6 @@ const services = [
   }
 ]
 
-/* ===========================
-   TIMELINE
-=========================== */
 
 const steps = [
   {
@@ -116,16 +113,11 @@ const steps = [
   }
 ]
 
-/* ===========================
-   COMPONENTE PRINCIPAL
-=========================== */
 
 export default function Services() {
 
   return (
     <main className="bg-background">
-
-      {/* ================= SERVIÇOS ================= */}
       <section className="py-32">
         <div className="max-w-7xl mx-auto px-4">
 
@@ -215,7 +207,6 @@ export default function Services() {
         </div>
       </section>
 
-{/* ================= TIMELINE ================= */}
 <section className="py-32 bg-surface">
   <div className="max-w-5xl mx-auto px-4">
     <h2 className="text-4xl font-bold text-center mb-20">
@@ -253,138 +244,156 @@ export default function Services() {
   </div>
 </section>
 
+    <section className="py-24 md:py-32">
+      <div className="max-w-7xl mx-auto px-4 grid gap-16 md:grid-cols-2 items-center">
 
-      {/* ================= ÁREA DO CLIENTE ================= */}
-      <section className="py-32">
-        <div className="max-w-7xl mx-auto px-4 grid gap-16 md:grid-cols-2 items-center">
-
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-4xl font-bold mb-6">
-              Área exclusiva do cliente
-            </h2>
-
-            <p className="text-textSecondary text-lg mb-8">
-              Você acompanha tudo em tempo real:
-              andamento, entregas e próximos passos.
-            </p>
-
-            <ul className="space-y-4 text-textSecondary">
-              {[
-                "Status atualizado",
-                "Etapas concluídas",
-                "Comunicação centralizada",
-                "Total transparência"
-              ].map((item, i) => (
-                <li key={i} className="flex gap-3">
-                  <CheckCircle size={18} className="text-primary" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-
- <motion.div
-  initial={{ opacity: 0, y: 40 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true }}
-  transition={{ duration: 0.6 }}
-  className="relative rounded-3xl border border-border bg-surface shadow-2xl overflow-hidden"
->
-  {/* Header fake do sistema */}
-  <div className="flex items-center justify-between px-6 py-4 border-b border-border bg-background">
-    <div>
-      <p className="text-sm text-textSecondary">Área do Cliente</p>
-      <p className="font-semibold">Projeto • Site Institucional</p>
-    </div>
-    <span className="text-xs px-3 py-1 rounded-full bg-primary/20 text-primary">
-      Em andamento
-    </span>
-  </div>
-
-  {/* Corpo */}
-  <div className="grid grid-cols-[180px_1fr] min-h-[320px]">
-
-    {/* Sidebar */}
-    <aside className="border-r border-border p-4 space-y-4 text-sm">
-      {[
-        "Visão geral",
-        "Etapas",
-        "Entregas",
-        "Mensagens"
-      ].map((item, i) => (
-        <div
-          key={i}
-          className={`px-3 py-2 rounded-md ${
-            i === 0
-              ? "bg-primary/10 text-primary font-medium"
-              : "text-textSecondary"
-          }`}
+        {/* TEXTO */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
         >
-          {item}
-        </div>
-      ))}
-    </aside>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            Área exclusiva do cliente
+          </h2>
 
-    {/* Conteúdo */}
-    <div className="p-6 space-y-6">
+          <p className="text-textSecondary text-base md:text-lg mb-8">
+            Você acompanha tudo em tempo real:
+            andamento, entregas e próximos passos.
+          </p>
 
-      {/* Cards */}
-      <div className="grid grid-cols-3 gap-4">
-        {[
-          { label: "Status", value: "Em progresso" },
-          { label: "Entrega", value: "15 dias" },
-          { label: "Etapas", value: "3 / 6" }
-        ].map((card, i) => (
-          <div
-            key={i}
-            className="rounded-xl border border-border bg-background p-4"
-          >
-            <p className="text-xs text-textSecondary mb-1">
-              {card.label}
-            </p>
-            <p className="font-semibold">
-              {card.value}
-            </p>
+          <ul className="space-y-4 text-textSecondary">
+            {[
+              "Status atualizado",
+              "Etapas concluídas",
+              "Comunicação centralizada",
+              "Total transparência"
+            ].map((item, i) => (
+              <li key={i} className="flex gap-3 items-center">
+                <CheckCircle size={18} className="text-primary shrink-0" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </motion.div>
+
+        {/* MOCKUP DO SISTEMA */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="relative rounded-3xl border border-border bg-surface shadow-2xl overflow-hidden"
+        >
+          {/* Header fake */}
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 px-4 sm:px-6 py-4 border-b border-border bg-background">
+            <div>
+              <p className="text-xs sm:text-sm text-textSecondary">
+                Área do Cliente
+              </p>
+              <p className="font-semibold text-sm sm:text-base">
+                Projeto • Site Institucional
+              </p>
+            </div>
+
+            <span className="text-xs w-fit px-3 py-1 rounded-full bg-primary/20 text-primary">
+              Em andamento
+            </span>
           </div>
-        ))}
-      </div>
 
-      {/* Progresso */}
-      <div>
-        <p className="text-sm font-medium mb-2">
-          Progresso do projeto
-        </p>
-        <div className="h-2 rounded-full bg-border overflow-hidden">
-          <div className="h-full w-[55%] bg-primary rounded-full" />
-        </div>
-      </div>
+          {/* Corpo */}
+          <div className="grid md:grid-cols-[180px_1fr] min-h-[300px]">
 
-      {/* Lista de etapas */}
-      <div className="space-y-3">
-        {[
-          "Briefing aprovado",
-          "Design em andamento",
-          "Desenvolvimento"
-        ].map((item, i) => (
-          <div key={i} className="flex items-center gap-3 text-sm">
-            <CheckCircle size={16} className="text-primary" />
-            <span>{item}</span>
+            {/* Sidebar */}
+            <aside
+              className="
+                border-b md:border-b-0 md:border-r border-border
+                p-3 md:p-4
+                flex md:flex-col gap-2 md:gap-4
+                overflow-x-auto md:overflow-visible
+                text-sm
+              "
+            >
+              {[
+                "Visão geral",
+                "Etapas",
+                "Entregas",
+                "Mensagens"
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className={`
+                    whitespace-nowrap
+                    px-3 py-2 rounded-md
+                    transition
+                    ${
+                      i === 0
+                        ? "bg-primary/10 text-primary font-medium"
+                        : "text-textSecondary hover:text-text"
+                    }
+                  `}
+                >
+                  {item}
+                </div>
+              ))}
+            </aside>
+
+            {/* Conteúdo */}
+            <div className="p-4 md:p-6 space-y-6">
+
+              {/* Cards */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {[
+                  { label: "Status", value: "Em progresso" },
+                  { label: "Entrega", value: "15 dias" },
+                  { label: "Etapas", value: "3 / 6" }
+                ].map((card, i) => (
+                  <div
+                    key={i}
+                    className="rounded-xl border border-border bg-background p-4"
+                  >
+                    <p className="text-xs text-textSecondary mb-1">
+                      {card.label}
+                    </p>
+                    <p className="font-semibold text-sm md:text-base">
+                      {card.value}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Progresso */}
+              <div>
+                <p className="text-sm font-medium mb-2">
+                  Progresso do projeto
+                </p>
+                <div className="h-2 rounded-full bg-border overflow-hidden">
+                  <div className="h-full w-[55%] bg-primary rounded-full transition-all" />
+                </div>
+              </div>
+
+              {/* Etapas */}
+              <div className="space-y-3">
+                {[
+                  "Briefing aprovado",
+                  "Design em andamento",
+                  "Desenvolvimento"
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3 text-sm">
+                    <CheckCircle size={16} className="text-primary shrink-0" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+
+            </div>
           </div>
-        ))}
+        </motion.div>
+
       </div>
+    </section>
 
-    </div>
-  </div>
-</motion.div>
-
-
-        </div>
-      </section>
 
         <FinalCTA />
 
