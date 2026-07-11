@@ -1,4 +1,4 @@
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 import {
   ArrowRight,
   Palette,
@@ -8,20 +8,19 @@ import {
   TrendingUp,
   CheckCircle,
   Sparkles,
-} from "lucide-react"
-import Particles from "react-tsparticles"
-import { loadSlim } from "tsparticles-slim"
-import { useCallback } from "react"
-import WhatsAppButton from "../components/WhatsAppButton"
+} from "lucide-react";
+import Particles from "react-tsparticles";
+import { loadSlim } from "tsparticles-slim";
+import { useCallback } from "react";
+import WhatsAppButton from "../components/WhatsAppButton";
 
 export default function DesignEstrategico() {
   const particlesInit = useCallback(async (engine: any) => {
-    await loadSlim(engine)
-  }, [])
+    await loadSlim(engine);
+  }, []);
 
   return (
     <main className="relative overflow-hidden bg-background text-textPrimary">
-
       {/* Partículas */}
       <Particles
         init={particlesInit}
@@ -53,12 +52,12 @@ export default function DesignEstrategico() {
         </motion.h1>
 
         <p className="text-textSecondary max-w-2xl text-lg mb-10">
-          UI e UX pensados estrategicamente para guiar o usuário,
-          gerar confiança e transformar atenção em ação.
+          UI e UX pensados estrategicamente para guiar o usuário, gerar
+          confiança e transformar atenção em ação.
         </p>
 
         <a
-          href="https://wa.me/5532999823915"
+          href="https://wa.me/5532999823915?text=Olá%2C%20Vinicius%21%20Vi%20seu%20trabalho%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.%20Gostaria%20de%20solicitar%20um%20orçamento."
           target="_blank"
           className="inline-flex items-center gap-3 bg-primary text-white px-6 py-4 rounded-xl font-medium hover:scale-[1.03] transition"
         >
@@ -70,10 +69,13 @@ export default function DesignEstrategico() {
       {/* MÉTRICAS (FICTÍCIAS) */}
       <section className="relative z-10 bg-surface border-y border-border">
         <div className="max-w-7xl mx-auto px-4 py-20 grid md:grid-cols-4 gap-8">
-
           {[
             { icon: Eye, value: "+92%", label: "Tempo na página" },
-            { icon: MousePointerClick, value: "+2.4x", label: "Cliques em CTA" },
+            {
+              icon: MousePointerClick,
+              value: "+2.4x",
+              label: "Cliques em CTA",
+            },
             { icon: TrendingUp, value: "+148%", label: "Conversão" },
             { icon: Sparkles, value: "Marca", label: "Mais autoridade" },
           ].map((item, i) => (
@@ -89,7 +91,6 @@ export default function DesignEstrategico() {
               <p className="text-textSecondary mt-2">{item.label}</p>
             </motion.div>
           ))}
-
         </div>
       </section>
 
@@ -100,16 +101,11 @@ export default function DesignEstrategico() {
         </h2>
 
         <div className="grid md:grid-cols-3 gap-10">
-
           <DesignCard
             icon={Layout}
             title="UI Design"
             desc="Interface moderna, clara e profissional."
-            items={[
-              "Layout limpo",
-              "Hierarquia visual",
-              "Identidade visual",
-            ]}
+            items={["Layout limpo", "Hierarquia visual", "Identidade visual"]}
           />
 
           <DesignCard
@@ -133,7 +129,6 @@ export default function DesignEstrategico() {
               "Escaneabilidade",
             ]}
           />
-
         </div>
       </section>
 
@@ -146,10 +141,9 @@ export default function DesignEstrategico() {
           </h3>
 
           <p className="text-textSecondary text-lg max-w-3xl mx-auto">
-            Antes de qualquer pixel,
-            eu entendo o público, o objetivo
-            e o caminho que o usuário deve seguir.
-            O visual existe para guiar decisões.
+            Antes de qualquer pixel, eu entendo o público, o objetivo e o
+            caminho que o usuário deve seguir. O visual existe para guiar
+            decisões.
           </p>
         </div>
       </section>
@@ -161,40 +155,26 @@ export default function DesignEstrategico() {
         </h2>
 
         <div className="grid md:grid-cols-3 gap-10">
-
           <DesignCard
             icon={CheckCircle}
             title="Pensado para conversão"
             desc="Não faço layout bonito que não vende."
-            items={[
-              "Objetivo claro",
-              "Ação guiada",
-              "Foco em resultado",
-            ]}
+            items={["Objetivo claro", "Ação guiada", "Foco em resultado"]}
           />
 
           <DesignCard
             icon={Eye}
             title="Experiência fluida"
             desc="Usuário entende e age sem esforço."
-            items={[
-              "Menos distração",
-              "Mais clareza",
-              "Fluxo natural",
-            ]}
+            items={["Menos distração", "Mais clareza", "Fluxo natural"]}
           />
 
           <DesignCard
             icon={Sparkles}
             title="Integração total"
             desc="Design alinhado com copy e código."
-            items={[
-              "Copy estratégica",
-              "Performance",
-              "SEO friendly",
-            ]}
+            items={["Copy estratégica", "Performance", "SEO friendly"]}
           />
-
         </div>
       </section>
 
@@ -205,11 +185,10 @@ export default function DesignEstrategico() {
             Seu visual comunica o valor do seu negócio?
           </h3>
           <p className="opacity-90 mb-8">
-            Design ruim afasta.
-            Design estratégico converte.
+            Design ruim afasta. Design estratégico converte.
           </p>
           <a
-            href="https://wa.me/5532999823915"
+            href="https://wa.me/5532999823915?text=Olá%2C%20Vinicius%21%20Vi%20seu%20trabalho%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.%20Gostaria%20de%20solicitar%20um%20orçamento."
             target="_blank"
             className="inline-flex items-center gap-3 bg-white text-primary px-6 py-4 rounded-xl font-medium hover:scale-[1.03] transition"
           >
@@ -221,7 +200,7 @@ export default function DesignEstrategico() {
 
       <WhatsAppButton />
     </main>
-  )
+  );
 }
 
 /* CARD */
@@ -231,10 +210,10 @@ function DesignCard({
   desc,
   items,
 }: {
-  icon: any
-  title: string
-  desc: string
-  items: string[]
+  icon: any;
+  title: string;
+  desc: string;
+  items: string[];
 }) {
   return (
     <motion.div
@@ -252,5 +231,5 @@ function DesignCard({
         ))}
       </ul>
     </motion.div>
-  )
+  );
 }

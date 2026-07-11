@@ -1,17 +1,16 @@
-import { useParams, Link } from "react-router-dom"
-import posts from "../blog/posts"
-import { marked } from "marked"
-import { motion } from "framer-motion"
+import { useParams, Link } from "react-router-dom";
+import posts from "../blog/posts";
+import { marked } from "marked";
+import { motion } from "framer-motion";
 
 export default function Post() {
-  const { slug } = useParams()
-  const post = posts.find(p => p.slug === slug)
+  const { slug } = useParams();
+  const post = posts.find((p) => p.slug === slug);
 
-  if (!post) return <p className="text-center py-20">Post não encontrado</p>
+  if (!post) return <p className="text-center py-20">Post não encontrado</p>;
 
   return (
     <main className="max-w-3xl mx-auto px-4 py-20">
-
       {/* ================= HERO ================= */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -19,9 +18,7 @@ export default function Post() {
         transition={{ duration: 0.6 }}
         className="mb-12"
       >
-        <h1 className="text-4xl md:text-5xl font-bold mb-3">
-          {post.title}
-        </h1>
+        <h1 className="text-4xl md:text-5xl font-bold mb-3">{post.title}</h1>
         <p className="text-textSecondary text-sm md:text-base">
           {post.date} • {post.category || "Sem categoria"}
         </p>
@@ -56,7 +53,7 @@ export default function Post() {
           Gostou deste conteúdo? Vamos conversar sobre seu projeto!
         </p>
         <a
-          href="https://wa.me/5532999823915"
+          href="https://wa.me/5532999823915?text=Olá%2C%20Vinicius%21%20Vi%20seu%20trabalho%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.%20Gostaria%20de%20solicitar%20um%20orçamento."
           target="_blank"
           className="inline-block px-8 py-4 rounded-xl bg-primary text-white font-semibold hover:opacity-90 transition"
         >
@@ -71,7 +68,6 @@ export default function Post() {
           </Link>
         </div>
       </motion.div>
-
     </main>
-  )
+  );
 }

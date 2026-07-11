@@ -1,169 +1,318 @@
-import { useState, useEffect } from "react"
-import { Link, NavLink, useLocation } from "react-router-dom"
-import { motion, AnimatePresence } from "framer-motion"
+import { useState, useEffect } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, ArrowRight } from "lucide-react";
+import Logo from "../../../public/favicon.svg";
+
+const menuItems = [
+  { label: "Home", to: "/" },
+  { label: "Serviços", to: "/servicos" },
+  { label: "Portfólio", to: "/portfolio" },
+  { label: "Blog", to: "/blog" },
+];
 
 export default function Header() {
-  const [open, setOpen] = useState(false)
-  const location = useLocation()
+  const [open, setOpen] = useState(false);
+  const location = useLocation();
 
-useEffect(() => {
-  const isMobile = window.matchMedia("(max-width: 767px)").matches
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
 
-  if (!isMobile) return
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
-  if (open) {
-    document.body.style.overflow = "hidden"
-    document.body.style.touchAction = "none"
-  } else {
-    document.body.style.overflow = ""
-    document.body.style.touchAction = ""
-  }
-
-  return () => {
-    document.body.style.overflow = ""
-    document.body.style.touchAction = ""
-  }
-}, [open])
-
-
-
-  const isActiveGroup = (path: string) =>
-    location.pathname.startsWith(path)
+  const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-xl bg-background/80 border-b border-white/5">
+    <header
+      className="
+sticky top-0 z-50
+border-b border-border/50
+bg-background/70
+backdrop-blur-xl
+"
+    >
+      {/* Glow superior */}
 
-      {/* Linha glow */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+      <div
+        className="
+absolute
+bottom-0
+left-0
+right-0
+h-px
+bg-gradient-to-r
+from-transparent
+via-primary/50
+to-transparent
+"
+      />
 
-      <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-
+      <div
+        className="
+mx-auto
+flex
+h-20
+max-w-7xl
+items-center
+justify-between
+px-5
+"
+      >
         {/* LOGO */}
-        <Link to="/" className="font-bold text-lg">
-          Vinicius
-          <span className="text-primary"> Soares</span>
+
+        <Link to="/" className="flex items-center gap-3">
+          <img
+            src="/favicon.svg"
+            alt="Vinicius Soares Dev"
+            className="
+      h-11
+      w-11
+      rounded-xl
+      shadow-lg
+      shadow-primary/20
+    "
+          />
+
+          <div>
+            <strong
+              className="
+block
+text-lg
+leading-none
+font-black
+text-textPrimary
+"
+            >
+              Vinicius
+              <span className="text-primary"> Soares</span>
+            </strong>
+
+            <span
+              className="
+text-xs
+text-textSecondary
+"
+            >
+              Full Stack Developer
+            </span>
+          </div>
         </Link>
 
-        {/* MENU DESKTOP */}
-        <nav className="hidden md:flex items-center gap-8 text-sm">
-          {[
-            { label: "Home", to: "/home" },
-            { label: "Serviços", to: "/servicos" },
-            { label: "Portfólio", to: "/portfolio" },
-            { label: "Blog", to: "/blog" },
-          ].map(item => {
-            const active = isActiveGroup(item.to)
+        {/* DESKTOP */}
 
-            return (
-              <NavLink
-                key={item.to}
-                to={item.to}
-                className={`relative transition ${
-                  active
-                    ? "text-text"
-                    : "text-textSecondary hover:text-text"
-                }`}
-              >
-                {item.label}
+        <nav
+          className="
+hidden
+items-center
+gap-8
+md:flex
+"
+        >
+          {menuItems.map((item) => (
+            <NavLink
+              key={item.to}
+              to={item.to}
+              className={`
+relative
+text-sm
+font-medium
+transition
+${
+  isActive(item.to)
+    ? "text-textPrimary"
+    : "text-textSecondary hover:text-textPrimary"
+}
+`}
+            >
+              {item.label}
 
-                {/* underline ativa */}
-                {active && (
-                  <motion.span
-                    layoutId="underline"
-                    className="absolute left-0 -bottom-1 h-[2px] w-full bg-primary rounded-full"
-                  />
-                )}
-              </NavLink>
-            )
-          })}
+              {isActive(item.to) && (
+                <motion.span
+                  layoutId="active"
+                  className="
+absolute
+-left-0
+-bottom-2
+h-[2px]
+w-full
+rounded-full
+bg-primary
+"
+                />
+              )}
+            </NavLink>
+          ))}
 
-          <Link
-            to="/contato"
-            className="rounded-lg bg-primary px-4 py-2 font-semibold text-black hover:scale-[1.03] transition"
+          <a
+            href="https://wa.me/5532999823915?text=Olá%2C%20Vinicius%21%20Vi%20seu%20trabalho%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.%20Gostaria%20de%20solicitar%20um%20orçamento."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+group
+flex
+items-center
+gap-2
+rounded-xl
+bg-primary
+px-5
+py-3
+font-semibold
+text-white
+transition
+hover:scale-[1.03]
+"
           >
             Orçamento
-          </Link>
+            <ArrowRight
+              size={16}
+              className="
+transition
+group-hover:translate-x-1
+"
+            />
+          </a>
         </nav>
 
-        {/* BOTÃO MOBILE */}
+        {/* MOBILE BUTTON */}
+
         <button
           onClick={() => setOpen(true)}
-          className="md:hidden text-2xl"
-          aria-label="Abrir menu"
+          className="
+rounded-xl
+border
+border-border
+p-2.5
+text-textPrimary
+md:hidden
+"
         >
-          ☰
+          <Menu size={24} />
         </button>
       </div>
 
-      {/* MENU MOBILE */}
+      {/* MOBILE */}
+
       <AnimatePresence>
         {open && (
           <>
-            {/* OVERLAY COM BLUR */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-40 bg-black/60 backdrop-blur-xl"
+              className="
+fixed
+inset-0
+z-40
+bg-black/60
+backdrop-blur-md
+"
               onClick={() => setOpen(false)}
             />
 
-            {/* MENU */}
-            <motion.aside
-              initial={{ y: -40, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -40, opacity: 0 }}
-              transition={{ duration: 0.35, ease: "easeOut" }}
-              className="fixed inset-x-4 top-6 z-50 rounded-3xl bg-background border border-border shadow-2xl overflow-hidden"
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: -30,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              exit={{
+                opacity: 0,
+                y: -30,
+              }}
+              transition={{
+                duration: 0.3,
+              }}
+              className="
+fixed
+left-4
+right-4
+top-5
+z-50
+rounded-3xl
+border
+border-border
+bg-background
+shadow-2xl
+overflow-hidden
+"
             >
-              {/* Header */}
-              <div className="flex items-center justify-between px-6 h-16 border-b border-border">
-                <span className="font-bold">
-                  Vinicius<span className="text-primary"> Soares</span>
-                </span>
-                <button onClick={() => setOpen(false)} className="text-xl">
-                  ✕
+              <div
+                className="
+flex
+items-center
+justify-between
+border-b
+border-border
+px-6
+h-16
+"
+              >
+                <strong className="font-black">
+                  Vinicius
+                  <span className="text-primary">Soares</span>
+                </strong>
+
+                <button onClick={() => setOpen(false)}>
+                  <X />
                 </button>
               </div>
 
-              {/* Links */}
-              <nav className="flex flex-col gap-6 px-6 py-8 text-lg">
-                {[
-                  { label: "Home", to: "/home" },
-                  { label: "Serviços", to: "/servicos" },
-                  { label: "Portfólio", to: "/portfolio" },
-                  { label: "Blog", to: "/blog" },
-                ].map(item => {
-                  const active = isActiveGroup(item.to)
+              <nav
+                className="
+flex
+flex-col
+gap-6
+px-6
+py-8
+"
+              >
+                {menuItems.map((item) => (
+                  <Link
+                    key={item.to}
+                    to={item.to}
+                    onClick={() => setOpen(false)}
+                    className="
+text-lg
+font-semibold
+text-textSecondary
+hover:text-primary
+transition
+"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
 
-                  return (
-                    <Link
-                      key={item.to}
-                      to={item.to}
-                      onClick={() => setOpen(false)}
-                      className={`font-medium transition ${
-                        active
-                          ? "text-primary"
-                          : "text-textSecondary hover:text-text"
-                      }`}
-                    >
-                      {item.label}
-                    </Link>
-                  )
-                })}
-
-                <Link
-                  to="/contato"
-                  onClick={() => setOpen(false)}
-                  className="mt-4 rounded-xl bg-primary py-3 text-center font-semibold text-black"
+                <a
+                  href="https://wa.me/5532999823915?text=Olá%2C%20Vinicius%21%20Vi%20seu%20trabalho%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.%20Gostaria%20de%20solicitar%20um%20orçamento."
+                  target="_blank"
+                  className="
+mt-4
+rounded-xl
+bg-primary
+py-4
+text-center
+font-bold
+text-white
+"
                 >
                   Solicitar orçamento
-                </Link>
+                </a>
               </nav>
-            </motion.aside>
+            </motion.div>
           </>
         )}
       </AnimatePresence>
     </header>
-  )
+  );
 }

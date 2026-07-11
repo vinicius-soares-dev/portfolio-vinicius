@@ -1,18 +1,17 @@
-import { motion } from "framer-motion"
-import { ArrowRight, TrendingUp, Users, Target, BarChart3 } from "lucide-react"
-import Particles from "react-tsparticles"
-import { loadSlim } from "tsparticles-slim"
-import { useCallback } from "react"
-import WhatsAppButton from "../components/WhatsAppButton"
+import { motion } from "framer-motion";
+import { ArrowRight, TrendingUp, Users, Target, BarChart3 } from "lucide-react";
+import Particles from "react-tsparticles";
+import { loadSlim } from "tsparticles-slim";
+import { useCallback } from "react";
+import WhatsAppButton from "../components/WhatsAppButton";
 
 export default function TrafficPaid() {
   const particlesInit = useCallback(async (engine: any) => {
-    await loadSlim(engine)
-  }, [])
+    await loadSlim(engine);
+  }, []);
 
   return (
     <main className="relative overflow-hidden bg-background text-textPrimary">
-
       {/* Partículas */}
       <Particles
         init={particlesInit}
@@ -43,12 +42,12 @@ export default function TrafficPaid() {
         </motion.h1>
 
         <p className="text-textSecondary max-w-2xl text-lg mb-10">
-          Gestão estratégica de anúncios focada em crescimento,
-          previsibilidade e retorno sobre investimento.
+          Gestão estratégica de anúncios focada em crescimento, previsibilidade
+          e retorno sobre investimento.
         </p>
 
         <a
-          href="https://wa.me/5532999823915"
+          href="https://wa.me/5532999823915?text=Olá%2C%20Vinicius%21%20Vi%20seu%20trabalho%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.%20Gostaria%20de%20solicitar%20um%20orçamento."
           target="_blank"
           className="inline-flex items-center gap-3 bg-primary text-white px-6 py-4 rounded-xl font-medium hover:scale-[1.03] transition"
         >
@@ -60,7 +59,6 @@ export default function TrafficPaid() {
       {/* RESULTADOS */}
       <section className="relative z-10 bg-surface border-y border-border">
         <div className="max-w-7xl mx-auto px-4 py-20 grid md:grid-cols-4 gap-8">
-
           {[
             { icon: TrendingUp, value: "+312%", label: "ROI médio" },
             { icon: Users, value: "+4.800", label: "Leads gerados" },
@@ -79,7 +77,6 @@ export default function TrafficPaid() {
               <p className="text-textSecondary mt-2">{item.label}</p>
             </motion.div>
           ))}
-
         </div>
       </section>
 
@@ -90,7 +87,6 @@ export default function TrafficPaid() {
         </h2>
 
         <div className="grid md:grid-cols-3 gap-10">
-
           {/* Tráfego Pago */}
           <ServiceCard
             title="Gestão de Tráfego Pago"
@@ -129,7 +125,6 @@ export default function TrafficPaid() {
               "Crescimento sustentável",
             ]}
           />
-
         </div>
       </section>
 
@@ -143,7 +138,7 @@ export default function TrafficPaid() {
             Vamos montar uma estratégia sob medida para o seu negócio.
           </p>
           <a
-            href="https://wa.me/5532999823915"
+            href="https://wa.me/5532999823915?text=Olá%2C%20Vinicius%21%20Vi%20seu%20trabalho%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.%20Gostaria%20de%20solicitar%20um%20orçamento."
             target="_blank"
             className="inline-flex items-center gap-3 bg-white text-primary px-6 py-4 rounded-xl font-medium hover:scale-[1.03] transition"
           >
@@ -155,7 +150,7 @@ export default function TrafficPaid() {
 
       <WhatsAppButton />
     </main>
-  )
+  );
 }
 
 /* COMPONENTE AUXILIAR */
@@ -164,9 +159,9 @@ function ServiceCard({
   desc,
   items,
 }: {
-  title: string
-  desc: string
-  items: string[]
+  title: string;
+  desc: string;
+  items: string[];
 }) {
   return (
     <motion.div
@@ -183,5 +178,5 @@ function ServiceCard({
         ))}
       </ul>
     </motion.div>
-  )
+  );
 }

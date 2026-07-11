@@ -1,4 +1,4 @@
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 import {
   ArrowRight,
   Code2,
@@ -7,20 +7,19 @@ import {
   LayoutDashboard,
   Workflow,
   Rocket,
-} from "lucide-react"
-import Particles from "react-tsparticles"
-import { loadSlim } from "tsparticles-slim"
-import { useCallback } from "react"
-import WhatsAppButton from "../components/WhatsAppButton"
+} from "lucide-react";
+import Particles from "react-tsparticles";
+import { loadSlim } from "tsparticles-slim";
+import { useCallback } from "react";
+import WhatsAppButton from "../components/WhatsAppButton";
 
 export default function WebSystems() {
   const particlesInit = useCallback(async (engine: any) => {
-    await loadSlim(engine)
-  }, [])
+    await loadSlim(engine);
+  }, []);
 
   return (
     <main className="relative overflow-hidden bg-background text-textPrimary">
-
       {/* Partículas */}
       <Particles
         init={particlesInit}
@@ -52,13 +51,12 @@ export default function WebSystems() {
         </motion.h1>
 
         <p className="text-textSecondary max-w-2xl text-lg mb-10">
-          Desenvolvemos plataformas personalizadas que resolvem
-          gargalos operacionais, reduzem retrabalho
-          e dão total controle da operação.
+          Desenvolvemos plataformas personalizadas que resolvem gargalos
+          operacionais, reduzem retrabalho e dão total controle da operação.
         </p>
 
         <a
-          href="https://wa.me/5532999823915"
+          href="https://wa.me/5532999823915?text=Olá%2C%20Vinicius%21%20Vi%20seu%20trabalho%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.%20Gostaria%20de%20solicitar%20um%20orçamento."
           target="_blank"
           className="inline-flex items-center gap-3 bg-primary text-white px-6 py-4 rounded-xl font-medium hover:scale-[1.03] transition"
         >
@@ -70,12 +68,19 @@ export default function WebSystems() {
       {/* IMPACTO */}
       <section className="relative z-10 bg-surface border-y border-border">
         <div className="max-w-7xl mx-auto px-4 py-20 grid md:grid-cols-4 gap-8">
-
           {[
             { icon: Workflow, value: "-65%", label: "Menos processos manuais" },
-            { icon: LayoutDashboard, value: "100%", label: "Controle centralizado" },
+            {
+              icon: LayoutDashboard,
+              value: "100%",
+              label: "Controle centralizado",
+            },
             { icon: Rocket, value: "+3x", label: "Produtividade" },
-            { icon: ShieldCheck, value: "Alta", label: "Segurança e confiabilidade" },
+            {
+              icon: ShieldCheck,
+              value: "Alta",
+              label: "Segurança e confiabilidade",
+            },
           ].map((item, index) => (
             <motion.div
               key={index}
@@ -89,7 +94,6 @@ export default function WebSystems() {
               <p className="text-textSecondary mt-2">{item.label}</p>
             </motion.div>
           ))}
-
         </div>
       </section>
 
@@ -100,7 +104,6 @@ export default function WebSystems() {
         </h2>
 
         <div className="grid md:grid-cols-3 gap-10">
-
           <SystemCard
             icon={LayoutDashboard}
             title="Painéis Administrativos"
@@ -116,24 +119,15 @@ export default function WebSystems() {
             icon={Database}
             title="Sistemas de Gestão"
             desc="Automatização de processos internos e operacionais."
-            items={[
-              "Financeiro",
-              "Agendamentos",
-              "Controle de dados",
-            ]}
+            items={["Financeiro", "Agendamentos", "Controle de dados"]}
           />
 
           <SystemCard
             icon={Code2}
             title="Plataformas Personalizadas"
             desc="Soluções criadas do zero para regras específicas."
-            items={[
-              "Fluxos sob medida",
-              "Escalável",
-              "Integrações futuras",
-            ]}
+            items={["Fluxos sob medida", "Escalável", "Integrações futuras"]}
           />
-
         </div>
       </section>
 
@@ -146,21 +140,18 @@ export default function WebSystems() {
           </h3>
 
           <p className="text-textSecondary text-lg max-w-3xl mx-auto">
-            Antes de desenvolver, entendo o fluxo do seu negócio,
-            identifico gargalos e desenho a solução ideal.
-            O sistema cresce junto com sua empresa.
+            Antes de desenvolver, entendo o fluxo do seu negócio, identifico
+            gargalos e desenho a solução ideal. O sistema cresce junto com sua
+            empresa.
           </p>
         </div>
       </section>
 
       {/* STACK / DIFERENCIAIS */}
       <section className="relative z-10 max-w-7xl mx-auto px-4 py-24">
-        <h2 className="text-3xl font-bold mb-12">
-          Diferenciais técnicos
-        </h2>
+        <h2 className="text-3xl font-bold mb-12">Diferenciais técnicos</h2>
 
         <div className="grid md:grid-cols-3 gap-10">
-
           <SystemCard
             icon={ShieldCheck}
             title="Segurança"
@@ -193,7 +184,6 @@ export default function WebSystems() {
               "Mais produtividade",
             ]}
           />
-
         </div>
       </section>
 
@@ -204,11 +194,10 @@ export default function WebSystems() {
             Seu processo pode ser mais simples
           </h3>
           <p className="opacity-90 mb-8">
-            Me explica sua dor e eu te mostro
-            como um sistema pode resolver.
+            Me explica sua dor e eu te mostro como um sistema pode resolver.
           </p>
           <a
-            href="https://wa.me/5532999823915"
+            href="https://wa.me/5532999823915?text=Olá%2C%20Vinicius%21%20Vi%20seu%20trabalho%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.%20Gostaria%20de%20solicitar%20um%20orçamento."
             target="_blank"
             className="inline-flex items-center gap-3 bg-white text-primary px-6 py-4 rounded-xl font-medium hover:scale-[1.03] transition"
           >
@@ -220,7 +209,7 @@ export default function WebSystems() {
 
       <WhatsAppButton />
     </main>
-  )
+  );
 }
 
 /* CARD */
@@ -230,10 +219,10 @@ function SystemCard({
   desc,
   items,
 }: {
-  icon: any
-  title: string
-  desc: string
-  items: string[]
+  icon: any;
+  title: string;
+  desc: string;
+  items: string[];
 }) {
   return (
     <motion.div
@@ -251,5 +240,5 @@ function SystemCard({
         ))}
       </ul>
     </motion.div>
-  )
+  );
 }

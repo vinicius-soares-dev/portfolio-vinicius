@@ -1,4 +1,4 @@
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 import {
   ArrowRight,
   Globe,
@@ -6,20 +6,19 @@ import {
   Search,
   Smartphone,
   Layout,
-} from "lucide-react"
-import Particles from "react-tsparticles"
-import { loadSlim } from "tsparticles-slim"
-import { useCallback } from "react"
-import WhatsAppButton from "../components/WhatsAppButton"
+} from "lucide-react";
+import Particles from "react-tsparticles";
+import { loadSlim } from "tsparticles-slim";
+import { useCallback } from "react";
+import WhatsAppButton from "../components/WhatsAppButton";
 
 export default function ProfessionalSites() {
   const particlesInit = useCallback(async (engine: any) => {
-    await loadSlim(engine)
-  }, [])
+    await loadSlim(engine);
+  }, []);
 
   return (
     <main className="relative overflow-hidden bg-background text-textPrimary">
-
       {/* Partículas */}
       <Particles
         init={particlesInit}
@@ -45,19 +44,17 @@ export default function ProfessionalSites() {
           className="text-4xl md:text-5xl font-bold max-w-3xl mb-6"
         >
           Sites profissionais que
-          <span className="text-primary"> vendem</span>,
-          posicionam e
+          <span className="text-primary"> vendem</span>, posicionam e
           <span className="text-primary"> geram autoridade</span>
         </motion.h1>
 
         <p className="text-textSecondary max-w-2xl text-lg mb-10">
-          Nada de sites genéricos.
-          Desenvolvemos experiências digitais rápidas, estratégicas
-          e pensadas para conversão.
+          Nada de sites genéricos. Desenvolvemos experiências digitais rápidas,
+          estratégicas e pensadas para conversão.
         </p>
 
         <a
-          href="https://wa.me/5532999823915"
+          href="https://wa.me/5532999823915?text=Olá%2C%20Vinicius%21%20Vi%20seu%20trabalho%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.%20Gostaria%20de%20solicitar%20um%20orçamento."
           target="_blank"
           className="inline-flex items-center gap-3 bg-primary text-white px-6 py-4 rounded-xl font-medium hover:scale-[1.03] transition"
         >
@@ -69,7 +66,6 @@ export default function ProfessionalSites() {
       {/* RESULTADOS */}
       <section className="relative z-10 bg-surface border-y border-border">
         <div className="max-w-7xl mx-auto px-4 py-20 grid md:grid-cols-4 gap-8">
-
           {[
             { icon: Zap, value: "+92%", label: "Mais velocidade" },
             { icon: Search, value: "+3x", label: "Visibilidade no Google" },
@@ -88,7 +84,6 @@ export default function ProfessionalSites() {
               <p className="text-textSecondary mt-2">{item.label}</p>
             </motion.div>
           ))}
-
         </div>
       </section>
 
@@ -99,7 +94,6 @@ export default function ProfessionalSites() {
         </h2>
 
         <div className="grid md:grid-cols-3 gap-10">
-
           <ServiceCard
             icon={Layout}
             title="Design Estratégico"
@@ -129,13 +123,8 @@ export default function ProfessionalSites() {
             title="SEO Técnico"
             desc="Seu site preparado para ser encontrado
             no Google desde o primeiro dia."
-            items={[
-              "SEO on-page",
-              "Estrutura otimizada",
-              "Indexação correta",
-            ]}
+            items={["SEO on-page", "Estrutura otimizada", "Indexação correta"]}
           />
-
         </div>
       </section>
 
@@ -148,9 +137,9 @@ export default function ProfessionalSites() {
           </h3>
 
           <p className="text-textSecondary text-lg max-w-3xl mx-auto">
-            Um site bem feito trabalha por você 24h por dia,
-            gera autoridade, filtra clientes e potencializa
-            todos os seus outros canais de marketing.
+            Um site bem feito trabalha por você 24h por dia, gera autoridade,
+            filtra clientes e potencializa todos os seus outros canais de
+            marketing.
           </p>
         </div>
       </section>
@@ -162,11 +151,11 @@ export default function ProfessionalSites() {
             Vamos tirar seu projeto do papel?
           </h3>
           <p className="opacity-90 mb-8">
-            Me conta sobre seu negócio e eu te digo
-            exatamente o que faz sentido construir.
+            Me conta sobre seu negócio e eu te digo exatamente o que faz sentido
+            construir.
           </p>
           <a
-            href="https://wa.me/5532999823915"
+            href="https://wa.me/5532999823915?text=Olá%2C%20Vinicius%21%20Vi%20seu%20trabalho%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.%20Gostaria%20de%20solicitar%20um%20orçamento."
             target="_blank"
             className="inline-flex items-center gap-3 bg-white text-primary px-6 py-4 rounded-xl font-medium hover:scale-[1.03] transition"
           >
@@ -178,7 +167,7 @@ export default function ProfessionalSites() {
 
       <WhatsAppButton />
     </main>
-  )
+  );
 }
 
 /* CARD */
@@ -188,10 +177,10 @@ function ServiceCard({
   desc,
   items,
 }: {
-  icon: any
-  title: string
-  desc: string
-  items: string[]
+  icon: any;
+  title: string;
+  desc: string;
+  items: string[];
 }) {
   return (
     <motion.div
@@ -209,5 +198,5 @@ function ServiceCard({
         ))}
       </ul>
     </motion.div>
-  )
+  );
 }

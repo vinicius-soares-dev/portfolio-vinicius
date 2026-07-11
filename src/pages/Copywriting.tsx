@@ -1,4 +1,4 @@
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 import {
   ArrowRight,
   PenTool,
@@ -7,20 +7,19 @@ import {
   TrendingUp,
   CheckCircle,
   Rocket,
-} from "lucide-react"
-import Particles from "react-tsparticles"
-import { loadSlim } from "tsparticles-slim"
-import { useCallback } from "react"
-import WhatsAppButton from "../components/WhatsAppButton"
+} from "lucide-react";
+import Particles from "react-tsparticles";
+import { loadSlim } from "tsparticles-slim";
+import { useCallback } from "react";
+import WhatsAppButton from "../components/WhatsAppButton";
 
 export default function Copywriting() {
   const particlesInit = useCallback(async (engine: any) => {
-    await loadSlim(engine)
-  }, [])
+    await loadSlim(engine);
+  }, []);
 
   return (
     <main className="relative overflow-hidden bg-background text-textPrimary">
-
       {/* Partículas */}
       <Particles
         init={particlesInit}
@@ -52,13 +51,12 @@ export default function Copywriting() {
         </motion.h1>
 
         <p className="text-textSecondary max-w-2xl text-lg mb-10">
-          Copywriting estratégico para transformar visitantes
-          em leads e clientes. Nada de texto genérico.
-          Cada palavra tem um propósito.
+          Copywriting estratégico para transformar visitantes em leads e
+          clientes. Nada de texto genérico. Cada palavra tem um propósito.
         </p>
 
         <a
-          href="https://wa.me/5532999823915"
+          href="https://wa.me/5532999823915?text=Olá%2C%20Vinicius%21%20Vi%20seu%20trabalho%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.%20Gostaria%20de%20solicitar%20um%20orçamento."
           target="_blank"
           className="inline-flex items-center gap-3 bg-primary text-white px-6 py-4 rounded-xl font-medium hover:scale-[1.03] transition"
         >
@@ -70,7 +68,6 @@ export default function Copywriting() {
       {/* RESULTADOS (FICTÍCIOS) */}
       <section className="relative z-10 bg-surface border-y border-border">
         <div className="max-w-7xl mx-auto px-4 py-20 grid md:grid-cols-4 gap-8">
-
           {[
             { icon: TrendingUp, value: "+187%", label: "Taxa de conversão" },
             { icon: Target, value: "-42%", label: "Custo por lead" },
@@ -89,38 +86,26 @@ export default function Copywriting() {
               <p className="text-textSecondary mt-2">{item.label}</p>
             </motion.div>
           ))}
-
         </div>
       </section>
 
       {/* O QUE FAÇO */}
       <section className="relative z-10 max-w-7xl mx-auto px-4 py-24">
-        <h2 className="text-3xl font-bold mb-12">
-          Serviços de Copywriting
-        </h2>
+        <h2 className="text-3xl font-bold mb-12">Serviços de Copywriting</h2>
 
         <div className="grid md:grid-cols-3 gap-10">
-
           <CopyCard
             icon={PenTool}
             title="Copy para Sites & Landing Pages"
             desc="Textos que guiam o usuário até a ação."
-            items={[
-              "Headline estratégica",
-              "Storytelling",
-              "CTAs persuasivos",
-            ]}
+            items={["Headline estratégica", "Storytelling", "CTAs persuasivos"]}
           />
 
           <CopyCard
             icon={MessageSquareText}
             title="Copy para Anúncios"
             desc="Anúncios que chamam atenção e geram cliques."
-            items={[
-              "Google Ads",
-              "Meta Ads",
-              "Mensagens diretas",
-            ]}
+            items={["Google Ads", "Meta Ads", "Mensagens diretas"]}
           />
 
           <CopyCard
@@ -133,7 +118,6 @@ export default function Copywriting() {
               "Conversão contínua",
             ]}
           />
-
         </div>
       </section>
 
@@ -146,10 +130,8 @@ export default function Copywriting() {
           </h3>
 
           <p className="text-textSecondary text-lg max-w-3xl mx-auto">
-            Antes de escrever qualquer palavra,
-            eu estudo o público, a dor,
-            a objeção e o momento de compra.
-            O texto nasce com estratégia.
+            Antes de escrever qualquer palavra, eu estudo o público, a dor, a
+            objeção e o momento de compra. O texto nasce com estratégia.
           </p>
         </div>
       </section>
@@ -161,40 +143,26 @@ export default function Copywriting() {
         </h2>
 
         <div className="grid md:grid-cols-3 gap-10">
-
           <CopyCard
             icon={CheckCircle}
             title="Foco em conversão"
             desc="Não escrevo pra agradar, escrevo pra converter."
-            items={[
-              "Clareza",
-              "Direção",
-              "Objetivo",
-            ]}
+            items={["Clareza", "Direção", "Objetivo"]}
           />
 
           <CopyCard
             icon={Target}
             title="Base em dados"
             desc="Copy alinhada com tráfego, UX e métricas."
-            items={[
-              "Teste",
-              "Otimização",
-              "Escala",
-            ]}
+            items={["Teste", "Otimização", "Escala"]}
           />
 
           <CopyCard
             icon={Rocket}
             title="Copy integrada"
             desc="Texto alinhado com design e tecnologia."
-            items={[
-              "UX",
-              "Design",
-              "Performance",
-            ]}
+            items={["UX", "Design", "Performance"]}
           />
-
         </div>
       </section>
 
@@ -205,11 +173,10 @@ export default function Copywriting() {
             Seu produto pode vender mais
           </h3>
           <p className="opacity-90 mb-8">
-            Se a copy não guia o cliente,
-            ele não compra.
+            Se a copy não guia o cliente, ele não compra.
           </p>
           <a
-            href="https://wa.me/5532999823915"
+            href="https://wa.me/5532999823915?text=Olá%2C%20Vinicius%21%20Vi%20seu%20trabalho%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.%20Gostaria%20de%20solicitar%20um%20orçamento."
             target="_blank"
             className="inline-flex items-center gap-3 bg-white text-primary px-6 py-4 rounded-xl font-medium hover:scale-[1.03] transition"
           >
@@ -221,7 +188,7 @@ export default function Copywriting() {
 
       <WhatsAppButton />
     </main>
-  )
+  );
 }
 
 /* CARD */
@@ -231,10 +198,10 @@ function CopyCard({
   desc,
   items,
 }: {
-  icon: any
-  title: string
-  desc: string
-  items: string[]
+  icon: any;
+  title: string;
+  desc: string;
+  items: string[];
 }) {
   return (
     <motion.div
@@ -252,5 +219,5 @@ function CopyCard({
         ))}
       </ul>
     </motion.div>
-  )
+  );
 }

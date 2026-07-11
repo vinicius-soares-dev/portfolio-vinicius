@@ -1,4 +1,4 @@
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 import {
   ArrowRight,
   Zap,
@@ -6,20 +6,19 @@ import {
   BarChart3,
   Gauge,
   LineChart,
-} from "lucide-react"
-import Particles from "react-tsparticles"
-import { loadSlim } from "tsparticles-slim"
-import { useCallback } from "react"
-import WhatsAppButton from "../components/WhatsAppButton"
+} from "lucide-react";
+import Particles from "react-tsparticles";
+import { loadSlim } from "tsparticles-slim";
+import { useCallback } from "react";
+import WhatsAppButton from "../components/WhatsAppButton";
 
 export default function SeoPerformance() {
   const particlesInit = useCallback(async (engine: any) => {
-    await loadSlim(engine)
-  }, [])
+    await loadSlim(engine);
+  }, []);
 
   return (
     <main className="relative overflow-hidden bg-background text-textPrimary">
-
       {/* Partículas */}
       <Particles
         init={particlesInit}
@@ -51,13 +50,13 @@ export default function SeoPerformance() {
         </motion.h1>
 
         <p className="text-textSecondary max-w-2xl text-lg mb-10">
-          Não adianta ter um site bonito se ninguém encontra.
-          Eu preparo sua estrutura para o Google,
-          melhoro a velocidade e transformo visitas em oportunidades reais.
+          Não adianta ter um site bonito se ninguém encontra. Eu preparo sua
+          estrutura para o Google, melhoro a velocidade e transformo visitas em
+          oportunidades reais.
         </p>
 
         <a
-          href="https://wa.me/5532999823915"
+          href="https://wa.me/5532999823915?text=Olá%2C%20Vinicius%21%20Vi%20seu%20trabalho%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.%20Gostaria%20de%20solicitar%20um%20orçamento."
           target="_blank"
           className="inline-flex items-center gap-3 bg-primary text-white px-6 py-4 rounded-xl font-medium hover:scale-[1.03] transition"
         >
@@ -69,7 +68,6 @@ export default function SeoPerformance() {
       {/* RESULTADOS */}
       <section className="relative z-10 bg-surface border-y border-border">
         <div className="max-w-7xl mx-auto px-4 py-20 grid md:grid-cols-4 gap-8">
-
           {[
             { icon: Search, value: "+3x", label: "Mais tráfego orgânico" },
             { icon: Zap, value: "-60%", label: "Tempo de carregamento" },
@@ -88,28 +86,20 @@ export default function SeoPerformance() {
               <p className="text-textSecondary mt-2">{item.label}</p>
             </motion.div>
           ))}
-
         </div>
       </section>
 
       {/* SERVIÇOS */}
       <section className="relative z-10 max-w-7xl mx-auto px-4 py-24">
-        <h2 className="text-3xl font-bold mb-12">
-          O que eu faço no seu SEO
-        </h2>
+        <h2 className="text-3xl font-bold mb-12">O que eu faço no seu SEO</h2>
 
         <div className="grid md:grid-cols-3 gap-10">
-
           <ServiceCard
             icon={Search}
             title="SEO Técnico"
             desc="Estrutura sólida para o Google entender,
             indexar e priorizar seu site."
-            items={[
-              "SEO on-page",
-              "Indexação correta",
-              "Sitemap e robots.txt",
-            ]}
+            items={["SEO on-page", "Indexação correta", "Sitemap e robots.txt"]}
           />
 
           <ServiceCard
@@ -135,7 +125,6 @@ export default function SeoPerformance() {
               "SEO focado em conversão",
             ]}
           />
-
         </div>
       </section>
 
@@ -148,10 +137,8 @@ export default function SeoPerformance() {
           </h3>
 
           <p className="text-textSecondary text-lg max-w-3xl mx-auto">
-            Posicionamento sólido vem de base técnica,
-            performance, conteúdo estratégico
-            e acompanhamento contínuo.
-            É isso que eu entrego.
+            Posicionamento sólido vem de base técnica, performance, conteúdo
+            estratégico e acompanhamento contínuo. É isso que eu entrego.
           </p>
         </div>
       </section>
@@ -163,11 +150,11 @@ export default function SeoPerformance() {
             Quer aparecer no Google do jeito certo?
           </h3>
           <p className="opacity-90 mb-8">
-            Analiso seu site e te mostro exatamente
-            onde estão as oportunidades de crescimento.
+            Analiso seu site e te mostro exatamente onde estão as oportunidades
+            de crescimento.
           </p>
           <a
-            href="https://wa.me/5532999823915"
+            href="https://wa.me/5532999823915?text=Olá%2C%20Vinicius%21%20Vi%20seu%20trabalho%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.%20Gostaria%20de%20solicitar%20um%20orçamento."
             target="_blank"
             className="inline-flex items-center gap-3 bg-white text-primary px-6 py-4 rounded-xl font-medium hover:scale-[1.03] transition"
           >
@@ -179,7 +166,7 @@ export default function SeoPerformance() {
 
       <WhatsAppButton />
     </main>
-  )
+  );
 }
 
 /* CARD */
@@ -189,10 +176,10 @@ function ServiceCard({
   desc,
   items,
 }: {
-  icon: any
-  title: string
-  desc: string
-  items: string[]
+  icon: any;
+  title: string;
+  desc: string;
+  items: string[];
 }) {
   return (
     <motion.div
@@ -210,5 +197,5 @@ function ServiceCard({
         ))}
       </ul>
     </motion.div>
-  )
+  );
 }

@@ -1,5 +1,5 @@
-import { useState } from "react"
-import { motion } from "framer-motion"
+import { useState } from "react";
+import { motion } from "framer-motion";
 
 const servicesPricing = [
   { price: 50, label: "Criativo Post" },
@@ -10,32 +10,30 @@ const servicesPricing = [
   { price: 200, label: "Identidade Visual" },
   { price: 260, label: "Site Institucional" },
   { price: 480, label: "E-commerce" },
-  { price: 799, label: "Aplicativo Web" }
-]
+  { price: 799, label: "Aplicativo Web" },
+];
 
 export default function Contact() {
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [message, setMessage] = useState("")
-  const [budget, setBudget] = useState(50)
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [budget, setBudget] = useState(50);
 
   const selectedService = servicesPricing
     .slice()
     .reverse()
-    .find(s => budget >= s.price)?.label
-
+    .find((s) => budget >= s.price)?.label;
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    const text = `Olá, meu nome é ${name} (${email}) e gostaria de solicitar: ${selectedService} com orçamento de R$ ${budget}. Mensagem: ${message}`
-    const url = `https://wa.me/5532999823915?text=${encodeURIComponent(text)}`
-    window.open(url, "_blank")
-  }
+    e.preventDefault();
+    const text = `Olá, meu nome é ${name} (${email}) e gostaria de solicitar: ${selectedService} com orçamento de R$ ${budget}. Mensagem: ${message}`;
+    const url = `https://wa.me/5532999823915?text=Olá%2C%20Vinicius%21%20Vi%20seu%20trabalho%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.%20Gostaria%20de%20solicitar%20um%20orçamento.?text=${encodeURIComponent(text)}`;
+    window.open(url, "_blank");
+  };
 
   return (
     <main className="bg-background min-h-screen py-20 px-4">
       <div className="max-w-4xl mx-auto">
-
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -47,7 +45,8 @@ export default function Contact() {
             Fale comigo
           </h1>
           <p className="text-textSecondary text-lg">
-            Preencha o formulário ou arraste o orçamento para ver o preço do seu projeto.
+            Preencha o formulário ou arraste o orçamento para ver o preço do seu
+            projeto.
           </p>
         </motion.div>
 
@@ -64,44 +63,49 @@ export default function Contact() {
               max={800}
               step={1}
               value={budget}
-              onChange={e => setBudget(Number(e.target.value))}
+              onChange={(e) => setBudget(Number(e.target.value))}
               className="w-full h-3 bg-primary/30 rounded-lg appearance-none cursor-pointer accent-primary"
             />
             <p className="mt-2 text-textSecondary">
               Nesse valor eu faço: <strong>{selectedService}</strong>
             </p>
-           
           </div>
 
           {/* Formulário */}
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label className="block text-textPrimary font-medium mb-1">Nome</label>
+              <label className="block text-textPrimary font-medium mb-1">
+                Nome
+              </label>
               <input
                 type="text"
                 value={name}
-                onChange={e => setName(e.target.value)}
+                onChange={(e) => setName(e.target.value)}
                 required
                 className="w-full border border-border rounded-lg px-4 py-2 bg-background text-text focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
 
             <div>
-              <label className="block text-textPrimary font-medium mb-1">E-mail</label>
+              <label className="block text-textPrimary font-medium mb-1">
+                E-mail
+              </label>
               <input
                 type="email"
                 value={email}
-                onChange={e => setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
                 required
                 className="w-full border border-border rounded-lg px-4 py-2 bg-background text-text focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
 
             <div>
-              <label className="block text-textPrimary font-medium mb-1">Mensagem</label>
+              <label className="block text-textPrimary font-medium mb-1">
+                Mensagem
+              </label>
               <textarea
                 value={message}
-                onChange={e => setMessage(e.target.value)}
+                onChange={(e) => setMessage(e.target.value)}
                 rows={4}
                 placeholder="Me conte sobre seu projeto..."
                 required
@@ -119,5 +123,5 @@ export default function Contact() {
         </div>
       </div>
     </main>
-  )
+  );
 }

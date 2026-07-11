@@ -1,11 +1,11 @@
-import { Phone } from "lucide-react"
-import { motion } from "framer-motion"
-import { createPortal } from "react-dom"
+import { Phone } from "lucide-react";
+import { motion } from "framer-motion";
+import { createPortal } from "react-dom";
 
 export default function WhatsAppButton() {
   return createPortal(
     <a
-      href="https://wa.me/5532999823915"
+      href="https://wa.me/5532999823915?text=Olá%2C%20Vinicius%21%20Vi%20seu%20trabalho%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.%20Gostaria%20de%20solicitar%20um%20orçamento."
       target="_blank"
       rel="noopener noreferrer"
       className="
@@ -38,6 +38,6 @@ export default function WhatsAppButton() {
         <Phone className="text-white" size={28} />
       </motion.div>
     </a>,
-    document.body 
-  )
+    document.body,
+  );
 }
