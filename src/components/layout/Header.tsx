@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowRight } from "lucide-react";
-import Logo from "../../../public/favicon.svg";
 
 const menuItems = [
   { label: "Home", to: "/" },
