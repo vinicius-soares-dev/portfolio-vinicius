@@ -1,0 +1,7 @@
+services:
+  web:
+    build: .
+    container_name: vgtech-portfolio-prod
+    restart: always
+    ports:
+      - "3008:80" # Escolha uma porta livre na sua VPS
