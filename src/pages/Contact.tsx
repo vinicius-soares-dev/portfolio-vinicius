@@ -27,7 +27,7 @@ export default function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const text = `Olá, meu nome é ${name} (${email}) e gostaria de solicitar: ${selectedService} com orçamento de R$ ${budget}. Mensagem: ${message}`;
-    const url = `https://wa.me/5532999823915?text=Olá%2C%20Vinicius%21%20Vi%20seu%20trabalho%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.%20Gostaria%20de%20solicitar%20um%20orçamento.?text=${encodeURIComponent(text)}`;
+    const url = `https://wa.me/5532998175601?text=Olá%2C%20Vinicius%21%20Vi%20seu%20trabalho%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.%20Gostaria%20de%20solicitar%20um%20orçamento.?text=${encodeURIComponent(text)}`;
     window.open(url, "_blank");
   };
 

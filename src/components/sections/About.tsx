@@ -133,7 +133,7 @@ export default function AboutMe() {
               <div className="absolute inset-0 scale-110 rounded-full bg-primary/20 blur-[90px]" />
 
               <img
-                src="https://xinjbrptsfbzvdtczehu.supabase.co/storage/v1/object/public/project-images/avatars/user-23/avatar.webp"
+                src="/images/perfil.jpg"
                 alt="Vinicius Soares"
                 className="
                   relative z-10
