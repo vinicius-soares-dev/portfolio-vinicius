@@ -4,6 +4,7 @@ import EcommerceSection from "../components/sections/EcommerceSection";
 import Hero from "../components/sections/Hero";
 import RealEstateSection from "../components/sections/Imobi";
 import ProblemSolution from "../components/sections/ProblemSolutions";
+import ProfessionalServicesSection from "../components/sections/ProfessionalServicesSection";
 import Projects from "../components/sections/Projects";
 import Services from "../components/sections/Services";
 import TargetAudience from "../components/sections/TargetAudience";
@@ -16,6 +17,7 @@ export default function Home() {
       <RealEstateSection />
       <EcommerceSection />
       <AiAutomationsSection />
+      <ProfessionalServicesSection />
       <ProblemSolution />
       <AboutMe />
       <Services />
