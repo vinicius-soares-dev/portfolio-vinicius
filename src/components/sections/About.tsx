@@ -9,379 +9,304 @@ import {
   Briefcase,
   Rocket,
   MapPin,
+  Sparkles,
+  ArrowUpRight,
 } from "lucide-react";
 
-const fadeUp: Variants = {
-  hidden: {
-    opacity: 0,
-    y: 40,
-  },
+const fadeUpVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.7,
-      ease: "easeOut",
-    },
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
-const specializations = [
-  {
-    icon: GraduationCap,
-    title: "Ciência da Computação",
-    description:
-      "Bacharelado com foco em arquitetura de software, algoritmos e engenharia de sistemas.",
+const staggerContainer: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 },
   },
-  {
-    icon: Code2,
-    title: "Engenharia de Software",
-    description:
-      "Pós-graduação voltada para arquitetura, escalabilidade, qualidade e boas práticas.",
-  },
-  {
-    icon: Cloud,
-    title: "Cloud Computing",
-    description:
-      "Infraestrutura em Google Cloud, AWS, deploy, monitoramento e ambientes escaláveis.",
-  },
-  {
-    icon: BarChart3,
-    title: "Marketing & Conversão",
-    description:
-      "SEO, Google Ads, CRO, copywriting e otimização da jornada do usuário.",
-  },
-];
+};
 
 const highlights = [
-  {
-    icon: Award,
-    title: "7+ anos",
-    subtitle: "Experiência",
-  },
-  {
-    icon: Briefcase,
-    title: "VG Tech",
-    subtitle: "Software House",
-  },
-  {
-    icon: Rocket,
-    title: "120+ projetos",
-    subtitle: "Entregues",
-  },
-  {
-    icon: MapPin,
-    title: "Brasil",
-    subtitle: "Atendimento remoto",
-  },
+  { icon: Award, title: "7+ anos", subtitle: "Experiência" },
+  { icon: Briefcase, title: "VG Tech", subtitle: "CEO & CTO" },
+  { icon: Rocket, title: "120+ projetos", subtitle: "Entregues" },
+  { icon: MapPin, title: "Brasil", subtitle: "Atendimento global" },
 ];
 
 export default function AboutMe() {
   return (
     <section
       aria-labelledby="about-title"
-      className="relative overflow-hidden bg-background py-28"
+      className="relative overflow-hidden bg-background py-24 sm:py-32 border-t border-border/30"
     >
-      {/* Background */}
-
+      {/* Background Lights Elegantes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -left-40 top-0 h-[500px] w-[500px] rounded-full bg-primary/10 blur-[140px]" />
-
-        <div className="absolute -right-40 bottom-0 h-[500px] w-[500px] rounded-full bg-orange-500/10 blur-[150px]" />
+        <div className="absolute left-[-10%] top-[10%] h-[600px] w-[600px] rounded-full bg-primary/5 blur-[160px]" />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-6">
-        {/* Header */}
-
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
+        {/* ================= HEADER ================= */}
         <motion.div
-          variants={fadeUp}
+          variants={fadeUpVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="mx-auto mb-20 max-w-3xl text-center"
+          className="mx-auto mb-16 max-w-3xl text-center"
         >
-          <span className="rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary">
-            Sobre mim
-          </span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-surface/80 border border-border/80 mb-6 backdrop-blur-md">
+            <Sparkles size={14} className="text-primary" />
+            <span className="text-xs font-semibold uppercase tracking-widest text-textSecondary">
+              Sobre Mim
+            </span>
+          </div>
 
           <h2
             id="about-title"
-            className="mt-6 text-4xl font-black text-textPrimary md:text-5xl"
+            className="text-3xl sm:text-4xl md:text-5xl font-black text-textPrimary tracking-tight leading-[1.15]"
           >
-            Quem está por trás dos projetos
+            Quem está por trás do código.
           </h2>
-
-          <p className="mt-6 text-lg leading-relaxed text-textSecondary">
-            Mais do que desenvolver sites e sistemas, meu objetivo é construir
-            soluções digitais capazes de gerar crescimento real para empresas.
-          </p>
         </motion.div>
 
-        {/* Conteúdo */}
-
-        <div className="grid items-center gap-16 lg:grid-cols-[420px_1fr]">
-          {/* Foto */}
-
+        {/* ================= BIOGRAFIA & FOTO (LAYOUT ASSIMÉTRICO) ================= */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          {/* Coluna Esquerda: Texto e Highlights */}
           <motion.div
-            variants={fadeUp}
+            variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
-            className="mx-auto"
+            viewport={{ once: true, margin: "-100px" }}
+            className="lg:col-span-7 flex flex-col justify-center"
           >
-            <div className="relative">
-              <div className="absolute inset-0 scale-110 rounded-full bg-primary/20 blur-[90px]" />
+            <motion.h3
+              variants={fadeUpVariants}
+              className="text-2xl sm:text-3xl font-bold text-textPrimary mb-6"
+            >
+              Tecnologia com foco em vendas e resultado.
+            </motion.h3>
 
-              <img
-                src="/images/perfil.jpg"
-                alt="Vinicius Soares"
-                className="
-                  relative z-10
-                  h-72
-                  w-72
-                  rounded-full
-                  border-4
-                  border-border
-                  object-cover
-                  shadow-2xl
-                  md:h-80
-                  md:w-80
-                "
-              />
-
-              {/* Badge */}
-
-              <div className="absolute -bottom-6 left-1/2 z-20 w-[260px] -translate-x-1/2 rounded-2xl border border-border bg-surface/90 p-5 shadow-xl backdrop-blur-xl">
-                <h3 className="text-center text-lg font-bold text-textPrimary">
+            <motion.div
+              variants={fadeUpVariants}
+              className="space-y-5 text-base sm:text-lg leading-relaxed text-textSecondary font-light"
+            >
+              <p>
+                Sou{" "}
+                <strong className="text-textPrimary font-bold">
                   Vinicius Soares
-                </h3>
+                </strong>
+                , Full Stack Software Engineer e CEO da{" "}
+                <strong className="text-textPrimary font-bold">
+                  VG Tech Solutions
+                </strong>
+                . Minha missão não é apenas programar, é desenhar arquiteturas
+                digitais que alavancam negócios.
+              </p>
+              <p>
+                Atuo na intersecção entre{" "}
+                <strong className="text-primary font-medium">
+                  Engenharia de Software de Alto Nível e Marketing de Conversão
+                </strong>
+                . Isso significa que todo site, aplicativo ou sistema que
+                construo é pensado para carregar em milissegundos e guiar o
+                usuário até a compra.
+              </p>
+            </motion.div>
 
-                <p className="mt-1 text-center text-sm text-textSecondary">
-                  Desenvolvedor Full Stack
-                </p>
+            {/* Grid de Dados Rápidos (Highlights) */}
+            <motion.div
+              variants={fadeUpVariants}
+              className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4"
+            >
+              {highlights.map((item, idx) => (
+                <div
+                  key={idx}
+                  className="flex flex-col gap-2 p-4 rounded-2xl bg-surface/40 border border-border/50 hover:bg-surface/80 hover:border-primary/30 transition-all"
+                >
+                  <item.icon size={20} className="text-primary" />
+                  <div>
+                    <strong className="block text-textPrimary text-sm font-bold">
+                      {item.title}
+                    </strong>
+                    <span className="text-xs text-textSecondary">
+                      {item.subtitle}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+          </motion.div>
+
+          {/* Coluna Direita: Foto Estilo Retrato (Portrait) */}
+          <motion.div
+            variants={fadeUpVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="lg:col-span-5 relative flex justify-center lg:justify-end mt-8 lg:mt-0"
+          >
+            <div className="relative w-full max-w-[380px] aspect-[4/5] rounded-[2.5rem] p-2 bg-gradient-to-b from-border/50 to-transparent">
+              <div className="absolute inset-0 bg-primary/10 blur-[80px] -z-10 rounded-[3rem]" />
+
+              <div className="w-full h-full rounded-[2rem] overflow-hidden bg-surface relative group">
+                {/* Overlay Dark sutil */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10" />
+
+                <img
+                  src="/images/perfil.jpg"
+                  alt="Vinicius Soares"
+                  className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                />
+
+                {/* Info Overlay */}
+                <div className="absolute bottom-6 left-6 right-6 z-20">
+                  <div className="px-4 py-3 rounded-2xl bg-black/40 backdrop-blur-md border border-white/10">
+                    <strong className="block text-white text-lg font-bold">
+                      Vinicius Soares
+                    </strong>
+                    <span className="text-primary text-xs font-bold uppercase tracking-wider block mt-0.5">
+                      Full Stack Engineer
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
           </motion.div>
-
-          {/* Texto */}
-
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            <h3 className="text-3xl font-bold text-textPrimary">
-              Tecnologia com foco em resultados.
-            </h3>
-
-            <div className="mt-8 space-y-6 text-lg leading-relaxed text-textSecondary">
-              <p>
-                Sou{" "}
-                <strong className="text-textPrimary">Vinicius Soares</strong>,
-                desenvolvedor Full Stack e fundador da{" "}
-                <strong className="text-textPrimary">VG Tech Solutions</strong>.
-              </p>
-
-              <p>
-                Minha especialidade é desenvolver soluções digitais que unem
-                tecnologia, estratégia e marketing para transformar visitantes
-                em clientes e negócios em marcas mais competitivas.
-              </p>
-
-              <p>
-                Cada projeto é construído pensando em performance, SEO,
-                experiência do usuário e escalabilidade, garantindo não apenas
-                um site bonito, mas uma ferramenta capaz de gerar resultados.
-              </p>
-            </div>
-
-            {/* Highlights */}
-
-            <div className="mt-12 grid gap-5 sm:grid-cols-2">
-              {highlights.map((item) => (
-                <motion.div
-                  key={item.title}
-                  whileHover={{
-                    y: -5,
-                  }}
-                  className="
-                    flex
-                    items-center
-                    gap-4
-                    rounded-2xl
-                    border
-                    border-border
-                    bg-surface/70
-                    p-5
-                    backdrop-blur-xl
-                  "
-                >
-                  <div className="rounded-xl bg-primary/10 p-3 text-primary">
-                    <item.icon size={24} />
-                  </div>
-
-                  <div>
-                    <h4 className="font-bold text-textPrimary">{item.title}</h4>
-
-                    <p className="text-sm text-textSecondary">
-                      {item.subtitle}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
         </div>
-        {/* ================= ESPECIALIZAÇÕES ================= */}
 
+        {/* ================= BENTO GRID DE ESPECIALIZAÇÕES ================= */}
         <motion.div
-          variants={fadeUp}
+          variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
-          className="mt-28"
+          viewport={{ once: true, margin: "-100px" }}
+          className="mt-32"
         >
-          <div className="mx-auto mb-14 max-w-3xl text-center">
-            <span className="rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary">
-              Especializações
-            </span>
-
-            <h3 className="mt-6 text-3xl font-black text-textPrimary md:text-4xl">
-              Conhecimento que vai além do desenvolvimento
+          <div className="mb-10 text-center lg:text-left">
+            <h3 className="text-2xl font-bold text-textPrimary">
+              A base técnica por trás do código.
             </h3>
-
-            <p className="mt-5 text-lg leading-relaxed text-textSecondary">
-              Acredito que um bom produto digital nasce da combinação entre
-              tecnologia, estratégia e experiência do usuário.
-            </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {specializations.map((item) => (
-              <motion.div
-                key={item.title}
-                variants={fadeUp}
-                whileHover={{
-                  y: -8,
-                }}
-                className="
-                  group
-                  relative
-                  overflow-hidden
-                  rounded-3xl
-                  border
-                  border-border
-                  bg-surface/70
-                  p-7
-                  backdrop-blur-xl
-                  transition-all
-                  duration-300
-                  hover:border-primary/30
-                "
-              >
-                {/* Glow */}
-
-                <div
-                  className="
-                    absolute
-                    -right-10
-                    -top-10
-                    h-28
-                    w-28
-                    rounded-full
-                    bg-primary/5
-                    blur-3xl
-                    transition-all
-                    duration-300
-                    group-hover:bg-primary/15
-                  "
-                />
-
-                {/* Linha superior */}
-
-                <div
-                  className="
-                    absolute
-                    left-0
-                    top-0
-                    h-1
-                    w-full
-                    bg-gradient-to-r
-                    from-primary
-                    to-orange-400
-                    opacity-70
-                  "
-                />
-
-                <div className="relative z-10">
-                  <div
-                    className="
-                      mb-6
-                      inline-flex
-                      rounded-2xl
-                      bg-primary/10
-                      p-4
-                      text-primary
-                      transition-transform
-                      duration-300
-                      group-hover:scale-110
-                    "
-                  >
-                    <item.icon size={30} />
-                  </div>
-
-                  <h4 className="text-xl font-bold text-textPrimary">
-                    {item.title}
-                  </h4>
-
-                  <p className="mt-4 leading-relaxed text-textSecondary">
-                    {item.description}
-                  </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[220px]">
+            {/* Bento Card 1: Ciência da Computação (Largo) */}
+            <motion.div
+              variants={fadeUpVariants}
+              className="md:col-span-2 group relative overflow-hidden rounded-[2rem] border border-border/50 bg-surface/40 p-8 backdrop-blur-xl hover:border-primary/30 transition-all flex flex-col justify-end"
+            >
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-[100px] -z-10" />
+              <div className="mb-auto">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-4">
+                  <GraduationCap size={24} />
                 </div>
-              </motion.div>
-            ))}
+              </div>
+              <div>
+                <h4 className="text-xl font-bold text-textPrimary mb-2">
+                  Ciência da Computação
+                </h4>
+                <p className="text-sm text-textSecondary font-light max-w-md">
+                  Bacharelado com foco em arquitetura de software, estrutura de
+                  dados, algoritmos avançados e fundamentos matemáticos de
+                  sistemas.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Bento Card 2: Marketing (Quadrado Alto) */}
+            <motion.div
+              variants={fadeUpVariants}
+              className="md:row-span-2 group relative overflow-hidden rounded-[2rem] border border-border/50 bg-surface/40 p-8 backdrop-blur-xl hover:border-primary/30 transition-all flex flex-col"
+            >
+              <div className="absolute bottom-0 right-0 w-full h-1/2 bg-gradient-to-t from-primary/5 to-transparent -z-10" />
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6">
+                <BarChart3 size={24} />
+              </div>
+              <h4 className="text-xl font-bold text-textPrimary mb-3">
+                Marketing & Conversão
+              </h4>
+              <p className="text-sm text-textSecondary font-light leading-relaxed">
+                Desenvolvimento sem vendas não paga as contas. Domínio em SEO
+                Técnico, Google Ads, Copywriting (escrita persuasiva), CRO
+                (Otimização de Taxa de Conversão) e mapeamento da jornada do
+                cliente.
+              </p>
+            </motion.div>
+
+            {/* Bento Card 3: Cloud (Quadrado) */}
+            <motion.div
+              variants={fadeUpVariants}
+              className="group relative overflow-hidden rounded-[2rem] border border-border/50 bg-surface/40 p-8 backdrop-blur-xl hover:border-primary/30 transition-all flex flex-col justify-end"
+            >
+              <div className="mb-auto">
+                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-4">
+                  <Cloud size={20} />
+                </div>
+              </div>
+              <div>
+                <h4 className="text-lg font-bold text-textPrimary mb-1">
+                  Cloud Computing
+                </h4>
+                <p className="text-xs text-textSecondary font-light">
+                  Infraestrutura em Google Cloud/AWS, Docker e CI/CD pipelines.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Bento Card 4: Software Eng (Quadrado) */}
+            <motion.div
+              variants={fadeUpVariants}
+              className="group relative overflow-hidden rounded-[2rem] border border-border/50 bg-surface/40 p-8 backdrop-blur-xl hover:border-primary/30 transition-all flex flex-col justify-end"
+            >
+              <div className="mb-auto">
+                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-4">
+                  <Code2 size={20} />
+                </div>
+              </div>
+              <div>
+                <h4 className="text-lg font-bold text-textPrimary mb-1">
+                  Eng. de Software
+                </h4>
+                <p className="text-xs text-textSecondary font-light">
+                  Pós-graduação em arquitetura escalável e Clean Code.
+                </p>
+              </div>
+            </motion.div>
           </div>
         </motion.div>
 
-        {/* ================= CTA ================= */}
-
+        {/* ================= CTA FINAL ================= */}
         <motion.div
-          variants={fadeUp}
+          variants={fadeUpVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
-          className="mt-28"
+          viewport={{ once: true, margin: "-50px" }}
+          className="mt-32"
         >
-          <div
-            className="
-              relative
-              overflow-hidden
-              rounded-[32px]
-              border
-              border-primary/20
-              bg-gradient-to-br
-              from-primary/10
-              via-surface
-              to-orange-500/10
-              p-10
-              text-center
-              backdrop-blur-xl
-            "
-          >
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,.08),transparent_60%)]" />
+          <div className="relative overflow-hidden rounded-[2.5rem] border border-primary/20 bg-surface/60 p-10 sm:p-16 text-center backdrop-blur-xl shadow-2xl shadow-primary/5">
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(37,99,235,0.1),transparent_70%)]" />
 
-            <div className="relative z-10 mx-auto max-w-3xl">
-              <h3 className="text-3xl font-black text-textPrimary md:text-4xl">
-                Cada projeto é desenvolvido para gerar resultado.
+            <div className="relative z-10 mx-auto max-w-3xl flex flex-col items-center">
+              <h3 className="text-3xl sm:text-4xl font-black text-textPrimary tracking-tight mb-6">
+                Cada linha de código é feita para{" "}
+                <span className="text-primary">gerar resultado.</span>
               </h3>
 
-              <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-textSecondary">
-                Não importa se é um site institucional, landing page, e-commerce
-                ou sistema web. O objetivo é sempre o mesmo: criar uma solução
-                rápida, escalável e preparada para transformar visitantes em
-                oportunidades reais.
+              <p className="max-w-2xl text-base sm:text-lg leading-relaxed text-textSecondary font-light mb-10">
+                Não importa se é um site institucional, landing page ou sistema
+                complexo. O objetivo é criar uma ferramenta veloz, escalável e
+                desenhada para transformar visitantes em clientes reais.
               </p>
+
+              <button className="group flex items-center gap-2 rounded-xl bg-primary px-8 py-4 font-bold text-white transition-all hover:bg-primaryHover hover:scale-[1.02] shadow-xl shadow-primary/20">
+                Iniciar meu projeto agora
+                <ArrowUpRight
+                  size={18}
+                  className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
+                />
+              </button>
             </div>
           </div>
         </motion.div>
