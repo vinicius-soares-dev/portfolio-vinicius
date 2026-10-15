@@ -5,64 +5,40 @@ import {
   BriefcaseBusiness,
   CalendarDays,
   BadgeCheck,
+  Sparkles,
+  MessageCircle,
+  Quote,
+  ShieldCheck,
 } from "lucide-react";
 
-const fadeUp: Variants = {
-  hidden: {
-    opacity: 0,
-    y: 40,
-  },
+const fadeUpVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.7,
-      ease: "easeOut",
-    },
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const staggerContainer: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 },
   },
 };
 
 const stats = [
-  {
-    icon: CalendarDays,
-    value: "7+",
-    label: "Anos de experiência",
-  },
-
-  {
-    icon: BriefcaseBusiness,
-    value: "40+",
-    label: "Projetos desenvolvidos",
-  },
-
-  {
-    icon: BadgeCheck,
-    value: "100%",
-    label: "Projetos personalizados",
-  },
-
-  {
-    icon: Star,
-    value: "5★",
-    label: "Foco na satisfação",
-  },
+  { icon: CalendarDays, value: "7+", label: "Anos de experiência" },
+  { icon: BriefcaseBusiness, value: "40+", label: "Projetos desenvolvidos" },
+  { icon: BadgeCheck, value: "100%", label: "Projetos sob medida" },
+  { icon: Star, value: "5.0", label: "Foco na satisfação" },
 ];
 
 const testimonials = [
-  {
-    platform: "WhatsApp",
-    image: "/images/testemunhas/whatsapp.jpg",
-  },
-
-  {
-    platform: "99Freelas",
-    image: "/images/testemunhas/99freelas.jpeg",
-  },
-
-  {
-    platform: "Workana",
-    image: "/images/testemunhas/workana.jpg",
-  },
+  { platform: "WhatsApp", image: "/images/testemunhas/whatsapp.jpg" },
+  { platform: "99Freelas", image: "/images/testemunhas/99freelas.jpeg" },
+  { platform: "Workana", image: "/images/testemunhas/workana.jpg" },
 ];
 
 export default function Testimonials() {
@@ -70,393 +46,172 @@ export default function Testimonials() {
     <section
       id="testimonials"
       aria-labelledby="testimonials-title"
-      className="relative overflow-hidden bg-background py-28"
+      className="relative overflow-hidden bg-background py-24 sm:py-32 border-t border-border/30"
     >
-      {/* Background */}
-
+      {/* Background Lights Elegantes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -left-40 top-0 h-[450px] w-[450px] rounded-full bg-primary/10 blur-[150px]" />
-
-        <div className="absolute -right-40 bottom-0 h-[500px] w-[500px] rounded-full bg-orange-500/10 blur-[160px]" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/5 rounded-full blur-[160px]" />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-6">
-        {/* Cabeçalho */}
-
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
+        {/* ================= HEADER ================= */}
         <motion.div
-          variants={fadeUp}
+          variants={fadeUpVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="mx-auto mb-20 max-w-3xl text-center"
+          className="mx-auto mb-16 sm:mb-20 max-w-3xl text-center"
         >
-          <span className="rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary">
-            Prova social
-          </span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-surface/80 border border-border/80 mb-6 backdrop-blur-md">
+            <Sparkles size={14} className="text-primary" />
+            <span className="text-xs font-semibold uppercase tracking-widest text-textSecondary">
+              Prova Social
+            </span>
+          </div>
 
           <h2
             id="testimonials-title"
-            className="mt-6 text-4xl font-black text-textPrimary md:text-5xl"
+            className="text-3xl sm:text-4xl md:text-5xl font-black text-textPrimary tracking-tight leading-[1.15]"
           >
-            Confiança construída
-            <br />
-            através de resultados reais.
+            A confiança é construída com <br className="hidden sm:block" />
+            <span className="text-primary">resultados reais.</span>
           </h2>
 
-          <p className="mt-6 text-lg leading-relaxed text-textSecondary">
-            Mais do que desenvolver sites e sistemas, meu objetivo é entregar
-            soluções que realmente façam diferença para cada cliente.
+          <p className="mt-6 text-base sm:text-lg leading-relaxed text-textSecondary font-light">
+            Não se trata apenas de entregar um código que funciona. É sobre
+            entregar uma solução que transforma o negócio do cliente e supera
+            expectativas.
           </p>
         </motion.div>
 
-        {/* Estatísticas */}
-
-        <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
-          {stats.map((stat) => (
+        {/* ================= ESTATÍSTICAS (DASHBOARD STYLE) ================= */}
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-24"
+        >
+          {stats.map((stat, idx) => (
             <motion.div
-              key={stat.label}
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              whileHover={{
-                y: -6,
-              }}
-              className="
-                group
-                relative
-                overflow-hidden
-                rounded-3xl
-                border
-                border-border
-                bg-surface/70
-                p-8
-                backdrop-blur-xl
-              "
+              key={idx}
+              variants={fadeUpVariants}
+              className="group relative overflow-hidden rounded-[2rem] border border-border/50 bg-surface/30 p-6 sm:p-8 backdrop-blur-xl transition-colors hover:border-primary/30 hover:bg-surface/50 flex flex-col items-center text-center"
             >
-              <div className="absolute left-0 top-0 h-1 w-full bg-gradient-to-r from-primary to-orange-400" />
-
-              <div className="mb-6 inline-flex rounded-2xl bg-primary/10 p-4 text-primary transition-transform duration-300 group-hover:scale-110">
-                <stat.icon size={30} />
+              <div className="mb-4 text-primary opacity-80 transition-transform duration-500 group-hover:scale-110 group-hover:opacity-100">
+                <stat.icon size={28} strokeWidth={1.5} />
               </div>
-
-              <h3 className="text-4xl font-black text-textPrimary">
+              <h3 className="text-4xl sm:text-5xl font-black text-textPrimary tracking-tighter mb-2">
                 {stat.value}
               </h3>
-
-              <p className="mt-3 leading-relaxed text-textSecondary">
+              <p className="text-xs sm:text-sm font-medium text-textSecondary uppercase tracking-wider">
                 {stat.label}
               </p>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Avaliações */}
-
-        <div className="mt-24">
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="mb-12"
-          >
-            <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-              <div>
-                <span className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
-                  Feedbacks reais
-                </span>
-
-                <h3 className="mt-3 text-3xl font-black text-textPrimary">
-                  O que clientes falam sobre meu trabalho
-                </h3>
-              </div>
-
-              <div className="flex items-center gap-2">
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <Star
-                    key={index}
-                    size={22}
-                    className="fill-yellow-400 text-yellow-400"
-                  />
-                ))}
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Cards de avaliações */}
-
-          <div className="grid gap-8 lg:grid-cols-3">
-            {testimonials.map((testimonial) => (
-              <motion.article
-                key={testimonial.platform}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                whileHover={{
-                  y: -8,
-                }}
-                className="
-                  group
-                  relative
-                  overflow-hidden
-                  rounded-[30px]
-                  border
-                  border-border
-                  bg-surface/70
-                  p-6
-                  backdrop-blur-xl
-                "
-              >
-                {/* Glow */}
-
-                <div
-                  className="
-                    absolute
-                    -right-20
-                    -top-20
-                    h-40
-                    w-40
-                    rounded-full
-                    bg-primary/10
-                    blur-3xl
-                    transition-all
-                    duration-500
-                    group-hover:bg-primary/20
-                  "
-                />
-
-                <div className="relative z-10">
-                  {/* Plataforma */}
-
-                  <div className="mb-6 flex items-center justify-between">
-                    <span
-                      className="
-                        rounded-full
-                        border
-                        border-primary/20
-                        bg-primary/5
-                        px-4
-                        py-1.5
-                        text-sm
-                        font-semibold
-                        text-primary
-                      "
-                    >
-                      {testimonial.platform}
-                    </span>
-
-                    <div className="flex gap-1">
-                      {Array.from({ length: 5 }).map((_, index) => (
-                        <Star
-                          key={index}
-                          size={14}
-                          className="fill-yellow-400 text-yellow-400"
-                        />
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Imagem */}
-
-                  <div
-                    className="
-                      overflow-hidden
-                      rounded-2xl
-                      border
-                      border-border
-                      bg-background
-                    "
-                  >
-                    <img
-                      src={testimonial.image}
-                      alt={`Avaliação ${testimonial.platform}`}
-                      className="
-                        aspect-[4/5]
-                        w-full
-                        object-cover
-                        transition-transform
-                        duration-700
-                        group-hover:scale-105
-                      "
-                    />
-                  </div>
-
-                  <p className="mt-6 text-sm leading-relaxed text-textSecondary">
-                    Avaliação enviada por cliente através da plataforma
-                    {` ${testimonial.platform}`}.
-                  </p>
-                </div>
-              </motion.article>
+        {/* ================= FEEDBACKS (PRINTS) ================= */}
+        <motion.div
+          variants={fadeUpVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4"
+        >
+          <div>
+            <h3 className="text-2xl sm:text-3xl font-bold text-textPrimary tracking-tight flex items-center gap-3">
+              O que dizem sobre mim
+              <Quote size={24} className="text-primary/50" />
+            </h3>
+          </div>
+          <div className="flex items-center gap-1.5 bg-surface/50 px-4 py-2 rounded-full border border-border/50">
+            <span className="text-sm font-bold text-textPrimary mr-2">5.0</span>
+            {Array.from({ length: 5 }).map((_, index) => (
+              <Star
+                key={index}
+                size={16}
+                className="fill-primary text-primary"
+              />
             ))}
           </div>
-          {/* CTA Final */}
+        </motion.div>
 
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="mt-24"
-          >
-            <div
-              className="
-              relative
-              overflow-hidden
-              rounded-[32px]
-              border
-              border-primary/20
-              bg-gradient-to-br
-              from-primary/10
-              via-surface
-              to-orange-500/10
-              p-10
-              text-center
-              backdrop-blur-xl
-              md:p-14
-            "
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid gap-6 sm:gap-8 lg:grid-cols-3"
+        >
+          {testimonials.map((testimonial) => (
+            <motion.article
+              key={testimonial.platform}
+              variants={fadeUpVariants}
+              className="group relative overflow-hidden rounded-[2rem] border border-border/50 bg-surface/40 p-2 backdrop-blur-xl transition-all duration-500 hover:border-primary/40 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10"
             >
-              <div
-                className="
-                absolute
-                -top-32
-                left-1/2
-                h-64
-                w-64
-                -translate-x-1/2
-                rounded-full
-                bg-primary/20
-                blur-3xl
-              "
-              />
-
-              <div className="relative z-10 mx-auto max-w-3xl">
-                <span
-                  className="
-                  inline-flex
-                  rounded-full
-                  bg-primary/10
-                  px-4
-                  py-2
-                  text-sm
-                  font-semibold
-                  text-primary
-                "
-                >
-                  Vamos trabalhar juntos
-                </span>
-
-                <h3
-                  className="
-                  mt-6
-                  text-3xl
-                  font-black
-                  text-textPrimary
-                  md:text-4xl
-                "
-                >
-                  Seu projeto pode ser o próximo resultado entregue.
-                </h3>
-
-                <p
-                  className="
-                  mt-6
-                  text-lg
-                  leading-relaxed
-                  text-textSecondary
-                "
-                >
-                  Conte sua ideia, vamos analisar a melhor estratégia e
-                  construir uma solução digital alinhada aos seus objetivos.
-                </p>
-
-                <div
-                  className="
-                  mt-10
-                  flex
-                  flex-col
-                  justify-center
-                  gap-4
-                  sm:flex-row
-                "
-                >
-                  <a
-                    href="https://wa.me/5532998175601?text=Olá%2C%20Vinicius%21%20Vi%20seu%20trabalho%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.%20Gostaria%20de%20solicitar%20um%20orçamento."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="
-                    inline-flex
-                    items-center
-                    justify-center
-                    rounded-2xl
-                    bg-primary
-                    px-8
-                    py-4
-                    font-semibold
-                    text-white
-                    transition-all
-                    hover:scale-[1.03]
-                    hover:shadow-xl
-                    hover:shadow-primary/20
-                  "
-                  >
-                    Solicitar orçamento
-                  </a>
-
-                  <a
-                    href="/portfolio"
-                    className="
-                    inline-flex
-                    items-center
-                    justify-center
-                    rounded-2xl
-                    border
-                    border-border
-                    bg-background
-                    px-8
-                    py-4
-                    font-semibold
-                    text-textPrimary
-                    transition-all
-                    hover:border-primary/40
-                    hover:bg-primary/5
-                  "
-                  >
-                    Ver todos os projetos
-                  </a>
+              <div className="relative w-full overflow-hidden rounded-[1.5rem] bg-black">
+                {/* Badge da Plataforma Flutuante */}
+                <div className="absolute top-4 right-4 z-20 flex items-center gap-1.5 rounded-full border border-white/10 bg-black/60 px-3 py-1.5 backdrop-blur-md">
+                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-white">
+                    {testimonial.platform}
+                  </span>
                 </div>
 
-                <div
-                  className="
-                  mx-auto
-                  mt-10
-                  max-w-2xl
-                  rounded-2xl
-                  border
-                  border-border/60
-                  bg-background/50
-                  p-5
-                "
+                <img
+                  src={testimonial.image}
+                  alt={`Avaliação via ${testimonial.platform}`}
+                  className="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                />
+
+                <div className="absolute inset-0 border border-white/5 rounded-[1.5rem] pointer-events-none" />
+              </div>
+            </motion.article>
+          ))}
+        </motion.div>
+
+        {/* ================= CTA FINAL BOTTOM ================= */}
+        <motion.div
+          variants={fadeUpVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className="mt-24 sm:mt-32"
+        >
+          <div className="relative overflow-hidden rounded-[2.5rem] border border-primary/20 bg-surface/60 p-10 sm:p-16 text-center backdrop-blur-xl shadow-2xl shadow-primary/5">
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(37,99,235,0.08),transparent_70%)]" />
+
+            <div className="relative z-10 mx-auto max-w-3xl flex flex-col items-center">
+              <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-xs font-bold text-primary uppercase tracking-wider mb-6 border border-primary/20">
+                <ShieldCheck size={14} /> Garantia de Qualidade
+              </span>
+
+              <h3 className="text-3xl sm:text-4xl font-black text-textPrimary tracking-tight mb-6">
+                Seu projeto pode ser a próxima{" "}
+                <span className="text-primary">história de sucesso.</span>
+              </h3>
+
+              <p className="max-w-2xl text-base sm:text-lg leading-relaxed text-textSecondary font-light mb-10">
+                Conte sua ideia, vamos desenhar a melhor arquitetura técnica e
+                construir uma solução digital alinhada aos seus objetivos de
+                crescimento.
+              </p>
+
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+                <a
+                  href="https://wa.me/5532998175601?text=Olá%2C%20Vinicius%21%20Vi%20seu%20trabalho%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-center gap-2 w-full sm:w-auto rounded-full bg-primary px-8 py-4 font-bold text-white transition-all hover:bg-primaryHover hover:scale-[1.02] shadow-xl shadow-primary/20"
                 >
-                  <p
-                    className="
-                    text-sm
-                    leading-relaxed
-                    text-textSecondary
-                  "
-                  >
-                    <strong className="text-textPrimary">Observação:</strong>{" "}
-                    alguns projetos apresentados pertencem aos clientes e
-                    dependem da manutenção do domínio e hospedagem. Por isso,
-                    eventualmente alguns links podem ficar indisponíveis mesmo
-                    após a entrega do projeto.
-                  </p>
-                </div>
+                  <MessageCircle size={18} />
+                  Solicitar orçamento
+                </a>
               </div>
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
