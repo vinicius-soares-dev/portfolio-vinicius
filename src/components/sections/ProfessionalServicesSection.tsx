@@ -4,7 +4,6 @@ import {
   Award,
   Calendar,
   Star,
-  MapPin,
   CheckCircle2,
   ArrowUpRight,
   ShieldCheck,
