@@ -1,4 +1,5 @@
 import AboutMe from "../components/sections/About";
+import AiAutomationsSection from "../components/sections/AiSection";
 import EcommerceSection from "../components/sections/EcommerceSection";
 import Hero from "../components/sections/Hero";
 import RealEstateSection from "../components/sections/Imobi";
@@ -14,6 +15,7 @@ export default function Home() {
       <Hero />
       <RealEstateSection />
       <EcommerceSection />
+      <AiAutomationsSection />
       <ProblemSolution />
       <AboutMe />
       <Services />
