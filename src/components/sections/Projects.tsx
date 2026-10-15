@@ -1,19 +1,27 @@
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
-import { ExternalLink, Layers, Rocket, Users, ArrowRight } from "lucide-react";
+import {
+  ExternalLink,
+  ArrowRight,
+  Sparkles,
+  MonitorSmartphone,
+  Info,
+} from "lucide-react";
 
-const fadeUp: Variants = {
-  hidden: {
-    opacity: 0,
-    y: 40,
-  },
+const fadeUpVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.7,
-      ease: "easeOut",
-    },
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const staggerContainer: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 },
   },
 };
 
@@ -22,77 +30,40 @@ const projects = [
     tag: "Plataforma SaaS",
     title: "Zinq",
     subtitle: "Agenda Online & Vitrine Digital",
-
     image: "/images/projetos/zinqdash.png",
-
     description:
-      "Plataforma criada do zero para profissionais que desejam automatizar agendamentos, pagamentos e presença digital em um único lugar.",
-
+      "Plataforma criada do zero para profissionais que desejam automatizar agendamentos, pagamentos e presença digital em um único lugar. Arquitetura completa com painel administrativo e landing page nativa.",
     metrics: [
       "SaaS Completo",
-      "Painel Administrativo",
+      "Painel Admin",
       "API Própria",
-      "Escalável",
+      "PostgreSQL",
+      "React",
     ],
-
-    items: [
-      "Profissionais liberais",
-      "Agenda, pagamentos e página pública",
-      "Arquitetura preparada para crescer",
-    ],
-
     link: "https://zinq.me/",
+    featured: true, // Define que este projeto ocupará 2 colunas
   },
-
   {
     tag: "Marketplace",
-
     title: "Publibox",
-
     subtitle: "Marketing Local",
-
     image: "https://placehold.co/1200x700/0F172A/FFFFFF?text=Publibox",
-
     description:
-      "Ecossistema digital que conecta anunciantes e espaços físicos para campanhas de marketing local.",
-
-    metrics: [
-      "Marketplace",
-      "Painel Administrativo",
-      "Busca Inteligente",
-      "Escalável",
-    ],
-
-    items: [
-      "Empresas e anunciantes",
-      "Marketplace inteligente",
-      "Sistema operacional completo",
-    ],
-
+      "Ecossistema digital que conecta anunciantes e espaços físicos para campanhas de marketing local com busca inteligente.",
+    metrics: ["Marketplace", "Busca Avançada", "Escalável"],
     link: "https://www.publibox.com.br/",
+    featured: false,
   },
-
   {
     tag: "Sistema Web",
-
     title: "Zolve",
-
     subtitle: "Gestão de Orçamentos",
-
     image: "/images/projetos/zolve.png",
-
     description:
-      "Sistema desenvolvido para emissão rápida de orçamentos profissionais, com geração automática de PDF e cadastro de clientes.",
-
-    metrics: ["Sistema Web", "PDF Automático", "Responsivo", "Cloud"],
-
-    items: [
-      "Autônomos e empresas",
-      "Clientes e propostas",
-      "Agilidade operacional",
-    ],
-
+      "Sistema B2B desenvolvido para emissão rápida de propostas comerciais com geração de PDF automático e gestão de clientes.",
+    metrics: ["Gerador PDF", "CRM Básico", "Cloud"],
     link: "https://zolve.vgtechsolutions.com.br",
+    featured: false,
   },
 ];
 
@@ -101,337 +72,199 @@ export default function Projects() {
     <section
       id="portfolio"
       aria-labelledby="projects-title"
-      className="relative overflow-hidden bg-background py-28"
+      className="relative overflow-hidden bg-background py-24 sm:py-32 border-t border-border/30"
     >
-      {/* Background */}
-
+      {/* Background Subtle Lights */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -right-40 top-0 h-[520px] w-[520px] rounded-full bg-primary/10 blur-[160px]" />
-
-        <div className="absolute -left-52 bottom-0 h-[500px] w-[500px] rounded-full bg-orange-500/10 blur-[160px]" />
+        <div className="absolute -left-[10%] top-[20%] h-[500px] w-[500px] rounded-full bg-primary/5 blur-[160px]" />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-6">
-        {/* Cabeçalho */}
-
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
+        {/* ================= HEADER ================= */}
         <motion.div
-          variants={fadeUp}
+          variants={fadeUpVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="mx-auto mb-20 max-w-3xl text-center"
+          className="mx-auto mb-16 sm:mb-20 max-w-3xl text-center"
         >
-          <span className="rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary">
-            Projetos desenvolvidos
-          </span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-surface/80 border border-border/80 mb-6 backdrop-blur-md">
+            <Sparkles size={14} className="text-primary" />
+            <span className="text-xs font-semibold uppercase tracking-widest text-textSecondary">
+              Projetos Recentes
+            </span>
+          </div>
 
           <h2
             id="projects-title"
-            className="mt-6 text-4xl font-black text-textPrimary md:text-5xl"
+            className="text-3xl sm:text-4xl md:text-5xl font-black text-textPrimary tracking-tight leading-[1.15]"
           >
-            Projetos reais.
-            <br />
-            Soluções construídas para gerar resultados.
+            Casos reais de{" "}
+            <span className="text-primary">código e conversão.</span>
           </h2>
 
-          <p className="mt-6 text-lg leading-relaxed text-textSecondary">
-            Cada projeto foi desenvolvido sob medida para resolver um problema
-            específico, combinando tecnologia, estratégia e foco na experiência
-            do usuário.
+          <p className="mt-6 text-base sm:text-lg leading-relaxed text-textSecondary font-light">
+            Cada linha de código que escrevo tem um propósito: resolver
+            problemas complexos com arquitetura de ponta e uma experiência de
+            usuário impecável.
           </p>
         </motion.div>
 
-        {/* Cards */}
-
-        <div className="grid gap-8 xl:grid-cols-3">
-          {projects.map((project) => (
+        {/* ================= GRID DE PROJETOS ================= */}
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid gap-8 lg:grid-cols-2"
+        >
+          {projects.map((project, _idx) => (
             <motion.article
               key={project.title}
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              whileHover={{
-                y: -8,
-              }}
-              className="
-              group
-              relative
-              overflow-hidden
-              rounded-[30px]
-              border
-              border-border
-              bg-surface/70
-              backdrop-blur-xl
-              transition-all
-              duration-300
-              hover:border-primary/30
-            "
+              variants={fadeUpVariants}
+              className={`group relative overflow-hidden rounded-[2.5rem] border border-border/50 bg-surface/30 backdrop-blur-xl transition-all duration-500 hover:border-primary/40 hover:bg-surface/50 hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/10 flex flex-col ${
+                project.featured ? "lg:col-span-2 lg:flex-row" : "lg:col-span-1"
+              }`}
             >
-              {/* Glow */}
+              {/* Linha de Brilho no Topo */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 z-20" />
 
+              {/* CONTEÚDO (TEXTOS) */}
               <div
-                className="
-                absolute
-                -right-20
-                -top-20
-                h-44
-                w-44
-                rounded-full
-                bg-primary/10
-                blur-3xl
-                transition-all
-                duration-500
-                group-hover:bg-primary/20
-              "
-              />
-
-              {/* Linha superior */}
-
-              <div className="absolute left-0 top-0 h-1 w-full bg-gradient-to-r from-primary to-orange-400" />
-
-              {/* Screenshot */}
-
-              <div className="relative overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="
-                  aspect-video
-                  w-full
-                  object-cover
-                  transition-transform
-                  duration-700
-                  group-hover:scale-105
-                "
-                />
-
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-
-                <span
-                  className="
-                  absolute
-                  left-5
-                  top-5
-                  rounded-full
-                  bg-primary
-                  px-3
-                  py-1
-                  text-xs
-                  font-semibold
-                  text-white
-                "
-                >
-                  {project.tag}
-                </span>
-              </div>
-
-              {/* Conteúdo */}
-
-              <div className="relative z-10 p-8">
-                <h3 className="text-2xl font-bold text-textPrimary">
-                  {project.title}
-                </h3>
-
-                <p className="mt-1 text-primary font-medium">
-                  {project.subtitle}
-                </p>
-
-                <p className="mt-6 leading-relaxed text-textSecondary">
-                  {project.description}
-                </p>
-
-                {/* Métricas */}
-
-                <div className="mt-8 flex flex-wrap gap-2">
-                  {project.metrics.map((metric) => (
-                    <span
-                      key={metric}
-                      className="
-                      rounded-full
-                      border
-                      border-primary/15
-                      bg-primary/5
-                      px-3
-                      py-1
-                      text-xs
-                      font-medium
-                      text-primary
-                    "
-                    >
-                      {metric}
+                className={`relative z-10 flex flex-col justify-between p-8 sm:p-10 ${project.featured ? "lg:w-[45%]" : "w-full"}`}
+              >
+                <div>
+                  <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border/50 bg-background/50 px-3 py-1.5">
+                    <MonitorSmartphone size={14} className="text-primary" />
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-textSecondary">
+                      {project.tag}
                     </span>
-                  ))}
+                  </div>
+
+                  <h3 className="text-2xl sm:text-3xl font-bold text-textPrimary tracking-tight mb-2">
+                    {project.title}
+                  </h3>
+
+                  <p className="text-sm font-semibold text-primary/80 mb-6 uppercase tracking-wider">
+                    {project.subtitle}
+                  </p>
+
+                  <p className="leading-relaxed text-textSecondary font-light text-sm sm:text-base mb-8">
+                    {project.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    {project.metrics.map((metric) => (
+                      <span
+                        key={metric}
+                        className="rounded-lg border border-primary/15 bg-primary/5 px-2.5 py-1.5 text-[10px] sm:text-xs font-semibold text-primary transition-colors group-hover:bg-primary/10"
+                      >
+                        {metric}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-
-                {/* Lista */}
-
-                <div className="mt-8 space-y-4">
-                  {project.items.map((item, index) => (
-                    <div key={item} className="flex items-start gap-3">
-                      {index === 0 && (
-                        <Users
-                          size={18}
-                          className="mt-0.5 shrink-0 text-primary"
-                        />
-                      )}
-
-                      {index === 1 && (
-                        <Layers
-                          size={18}
-                          className="mt-0.5 shrink-0 text-primary"
-                        />
-                      )}
-
-                      {index === 2 && (
-                        <Rocket
-                          size={18}
-                          className="mt-0.5 shrink-0 text-primary"
-                        />
-                      )}
-
-                      <span className="text-textSecondary">{item}</span>
-                    </div>
-                  ))}
-                </div>
-
-                {/* CTA */}
 
                 <a
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="
-                  mt-10
-                  inline-flex
-                  items-center
-                  gap-2
-                  font-semibold
-                  text-primary
-                  transition-all
-                  duration-300
-                  group-hover:gap-4
-                "
+                  className="inline-flex items-center gap-2 font-bold text-textPrimary text-sm transition-all duration-300 hover:text-primary mt-auto w-max"
                 >
-                  Acessar projeto
+                  Visitar projeto vivo
                   <ExternalLink
-                    size={18}
+                    size={16}
                     className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
                   />
                 </a>
               </div>
+
+              {/* ÁREA DA IMAGEM (MOCKUP DE NAVEGADOR) */}
+              <div
+                className={`relative flex items-center justify-center p-6 pt-0 sm:pt-6 ${project.featured ? "lg:w-[55%] lg:p-10" : "w-full h-64 sm:h-80"}`}
+              >
+                {/* Glow de fundo da imagem */}
+                <div className="absolute inset-0 bg-primary/5 blur-2xl transition-opacity duration-500 group-hover:opacity-100 opacity-50 rounded-full" />
+
+                {/* Mockup Frame */}
+                <div className="relative w-full h-full rounded-xl sm:rounded-2xl border border-white/10 bg-[#0a0a0a] shadow-2xl overflow-hidden flex flex-col transform transition-transform duration-700 group-hover:scale-[1.02]">
+                  {/* Top Bar do Mac */}
+                  <div className="flex h-8 w-full items-center gap-1.5 border-b border-white/10 bg-[#141414] px-4">
+                    <div className="h-2.5 w-2.5 rounded-full bg-[#FF5F56]" />
+                    <div className="h-2.5 w-2.5 rounded-full bg-[#FFBD2E]" />
+                    <div className="h-2.5 w-2.5 rounded-full bg-[#27C93F]" />
+                  </div>
+
+                  {/* Imagem do Projeto */}
+                  <div className="relative flex-1 bg-[#0a0a0a] overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-105"
+                    />
+                  </div>
+                </div>
+              </div>
             </motion.article>
           ))}
-        </div>
-        {/* CTA Final */}
+        </motion.div>
 
+        {/* ================= CTA FINAL E OBSERVAÇÃO ================= */}
         <motion.div
-          variants={fadeUp}
+          variants={fadeUpVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
-          className="mt-24"
+          viewport={{ once: true, margin: "-50px" }}
+          className="mt-20 sm:mt-24"
         >
-          <div
-            className="
-              relative
-              overflow-hidden
-              rounded-[32px]
-              border
-              border-primary/20
-              bg-gradient-to-br
-              from-primary/10
-              via-surface
-              to-orange-500/10
-              p-10
-              backdrop-blur-xl
-            "
-          >
-            {/* Glow */}
+          <div className="relative overflow-hidden rounded-[2.5rem] border border-primary/20 bg-surface/60 p-10 sm:p-16 text-center backdrop-blur-xl shadow-2xl shadow-primary/5 flex flex-col items-center">
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(37,99,235,0.08),transparent_70%)]" />
 
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,.08),transparent_65%)]" />
+            <div className="relative z-10 max-w-3xl">
+              <h3 className="text-3xl sm:text-4xl font-black text-textPrimary tracking-tight mb-6">
+                Quer ver mais detalhes?
+              </h3>
 
-            <div className="relative z-10">
-              <div className="mx-auto max-w-3xl text-center">
-                <span className="rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary">
-                  Quer ver mais?
-                </span>
+              <p className="text-base sm:text-lg leading-relaxed text-textSecondary font-light mb-10">
+                Além destes, desenvolvi inúmeras landing pages de alta
+                conversão, e-commerces e sistemas internos para empresas que
+                precisam de resultados mensuráveis.
+              </p>
 
-                <h3 className="mt-6 text-3xl font-black text-textPrimary md:text-4xl">
-                  Estes são apenas alguns dos projetos desenvolvidos.
-                </h3>
-
-                <p className="mt-6 text-lg leading-relaxed text-textSecondary">
-                  Ao longo dos últimos anos desenvolvi sites institucionais,
-                  landing pages, sistemas web, plataformas SaaS, marketplaces e
-                  soluções personalizadas para empresas de diferentes segmentos.
-                </p>
-              </div>
-
-              {/* Botões */}
-
-              <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a
                   href="/portfolio"
-                  className="
-                    inline-flex
-                    items-center
-                    justify-center
-                    gap-3
-                    rounded-2xl
-                    bg-primary
-                    px-8
-                    py-4
-                    font-semibold
-                    text-white
-                    transition-all
-                    duration-300
-                    hover:scale-[1.03]
-                    hover:shadow-xl
-                    hover:shadow-primary/20
-                  "
+                  className="group flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-primary px-8 py-4 font-bold text-white transition-all hover:bg-primaryHover hover:scale-[1.02] shadow-xl shadow-primary/20"
                 >
-                  Ver portfólio completo
-                  <ArrowRight size={20} />
+                  Ver Portfólio Completo
+                  <ArrowRight
+                    size={18}
+                    className="transition-transform group-hover:translate-x-1"
+                  />
                 </a>
 
                 <a
-                  href="https://wa.me/5532998175601?text=Olá%2C%20Vinicius%21%20Vi%20seu%20trabalho%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.%20Gostaria%20de%20solicitar%20um%20orçamento."
+                  href="https://wa.me/5532998175601?text=Olá%2C%20Vinicius%21%20Vi%20seu%20trabalho%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="
-                    inline-flex
-                    items-center
-                    justify-center
-                    rounded-2xl
-                    border
-                    border-border
-                    bg-surface
-                    px-8
-                    py-4
-                    font-semibold
-                    text-textPrimary
-                    transition-all
-                    duration-300
-                    hover:border-primary/30
-                    hover:bg-primary/5
-                  "
+                  className="group flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-surface border border-border px-8 py-4 font-bold text-textPrimary transition-all hover:bg-white/5 hover:border-primary/30"
                 >
-                  Conversar sobre meu projeto
+                  Discutir meu projeto
                 </a>
               </div>
+            </div>
 
-              {/* Observação */}
-
-              <div className="mx-auto mt-10 max-w-3xl rounded-2xl border border-border/60 bg-background/50 p-5 text-center">
-                <p className="text-sm leading-relaxed text-textSecondary">
-                  <strong className="text-textPrimary">Observação:</strong>{" "}
-                  alguns projetos pertencem aos próprios clientes. Caso o
-                  domínio ou a hospedagem não sejam renovados, determinados
-                  links podem ficar temporariamente indisponíveis, mesmo que o
-                  desenvolvimento tenha sido realizado pela VG Tech Solutions.
-                </p>
-              </div>
+            {/* Disclaimer / Observação Minimalista */}
+            <div className="relative z-10 mt-12 pt-8 border-t border-border/40 w-full max-w-2xl flex items-start sm:items-center gap-3 text-left sm:text-center text-textSecondary/60 text-xs font-light">
+              <Info size={16} className="shrink-0 mt-0.5 sm:mt-0" />
+              <p>
+                <strong className="text-textSecondary/80 font-medium">
+                  Nota:
+                </strong>{" "}
+                Alguns projetos são de domínio dos clientes. Caso não renovem a
+                hospedagem, os links podem ficar inativos temporariamente, mesmo
+                que a autoria do software seja da VG Tech Solutions.
+              </p>
             </div>
           </div>
         </motion.div>
