@@ -300,13 +300,18 @@ export default function AboutMe() {
                 desenhada para transformar visitantes em clientes reais.
               </p>
 
-              <button className="group flex items-center gap-2 rounded-xl bg-primary px-8 py-4 font-bold text-white transition-all hover:bg-primaryHover hover:scale-[1.02] shadow-xl shadow-primary/20">
+              <a
+                href="https://wa.me/5532998175601?text=Olá%2C%20Vinicius%21%20Vi%20seu%20portfólio%20e%20gostaria%20de%20iniciar%20o%20desenvolvimento%20do%20meu%20projeto."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 rounded-xl bg-primary px-8 py-4 font-bold text-white transition-all hover:bg-primaryHover hover:scale-[1.02] shadow-xl shadow-primary/20"
+              >
                 Iniciar meu projeto agora
                 <ArrowUpRight
                   size={18}
                   className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
                 />
-              </button>
+              </a>
             </div>
           </div>
         </motion.div>

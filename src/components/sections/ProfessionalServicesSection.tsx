@@ -454,13 +454,18 @@ export default function ProfessionalServicesSection() {
               ))}
             </div>
 
-            <button className="group inline-flex items-center gap-3 bg-surface hover:bg-surface/80 border border-border hover:border-primary/50 px-6 py-3.5 rounded-xl text-textPrimary font-bold transition-all shadow-sm">
+            <a
+              href="https://wa.me/5532998175601?text=Olá%2C%20Vinicius%21%20Vi%20seu%20portfólio%20e%20gostaria%20de%20criar%20um%20site%20especializado%20para%20o%20meu%20segmento%20profissional."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-3 bg-surface hover:bg-surface/80 border border-border hover:border-primary/50 px-6 py-3.5 rounded-xl text-textPrimary font-bold transition-all shadow-sm"
+            >
               Criar site para meu segmento
               <ArrowUpRight
                 size={18}
                 className="text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
               />
-            </button>
+            </a>
           </motion.div>
         </div>
       </div>

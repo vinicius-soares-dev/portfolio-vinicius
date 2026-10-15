@@ -228,13 +228,18 @@ export default function AiAutomationsSection() {
               ))}
             </div>
 
-            <button className="group inline-flex items-center gap-3 bg-surface hover:bg-surface/80 border border-border hover:border-cyan-500/50 px-6 py-3.5 rounded-xl text-textPrimary font-bold transition-all shadow-sm">
+            <a
+              href="https://wa.me/5532998175601?text=Olá%2C%20Vinicius%21%20Vi%20seu%20portfólio%20e%20quero%20saber%20mais%20sobre%20como%20automatizar%20minha%20empresa%20com%20agentes%20de%20IA."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-3 bg-surface hover:bg-surface/80 border border-border hover:border-cyan-500/50 px-6 py-3.5 rounded-xl text-textPrimary font-bold transition-all shadow-sm"
+            >
               Automatizar minha empresa
               <ArrowUpRight
                 size={18}
                 className="text-cyan-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
               />
-            </button>
+            </a>
           </motion.div>
 
           {/* LADO DIREITO: Mockup Interativo do Agente Inteligente */}

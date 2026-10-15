@@ -71,13 +71,18 @@ export default function RealEstateSection() {
               ))}
             </div>
 
-            <button className="group inline-flex items-center gap-3 bg-surface hover:bg-surface/80 border border-border hover:border-amber-500/50 px-6 py-3.5 rounded-xl text-textPrimary font-bold transition-all">
-              Ver projetos imobiliários
+            <a
+              href="https://wa.me/5532998175601?text=Olá%2C%20Vinicius%21%20Vi%20seu%20portfólio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto%20de%20alto%20padrão%20para%20o%20setor%20imobiliário."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-3 bg-surface hover:bg-surface/80 border border-border hover:border-amber-500/50 px-6 py-3.5 rounded-xl text-textPrimary font-bold transition-all shadow-sm"
+            >
+              Solicitar projeto imobiliário
               <ArrowUpRight
                 size={18}
                 className="text-amber-500 group-hover:rotate-12 transition-transform"
               />
-            </button>
+            </a>
           </motion.div>
 
           {/* LADO DIREITO: Mockup Realista de Site Imobiliário */}
