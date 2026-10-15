@@ -15,7 +15,7 @@ import {
 export default function SocialProofToast() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
-  const [isDismissedPermanently, setIsDismissedPermanently] = useState(false);
+  const [isDismissedPermanently, _setIsDismissedPermanently] = useState(false);
 
   // Gera datas dinâmicas a partir de hoje
   const getDynamicDate = (daysAhead: number) => {
