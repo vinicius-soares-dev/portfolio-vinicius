@@ -1,5 +1,6 @@
 import AboutMe from "../components/sections/About";
 import Hero from "../components/sections/Hero";
+import RealEstateSection from "../components/sections/Imobi";
 import ProblemSolution from "../components/sections/ProblemSolutions";
 import Projects from "../components/sections/Projects";
 import Services from "../components/sections/Services";
@@ -10,6 +11,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <RealEstateSection />
       <ProblemSolution />
       <AboutMe />
       <Services />
