@@ -1,4 +1,5 @@
 import AboutMe from "../components/sections/About";
+import EcommerceSection from "../components/sections/EcommerceSection";
 import Hero from "../components/sections/Hero";
 import RealEstateSection from "../components/sections/Imobi";
 import ProblemSolution from "../components/sections/ProblemSolutions";
@@ -12,6 +13,7 @@ export default function Home() {
     <>
       <Hero />
       <RealEstateSection />
+      <EcommerceSection />
       <ProblemSolution />
       <AboutMe />
       <Services />
