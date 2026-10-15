@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, FolderKanban } from "lucide-react";
+import type { Variants } from "framer-motion";
+import { ExternalLink, FolderKanban, Sparkles } from "lucide-react";
 import FinalCTA from "../components/sections/FinalCTA";
 
 type Segment =
@@ -27,12 +28,42 @@ type Project = {
   images?: string[];
 };
 
+const fadeUpVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+    },
+  },
+};
+
 const projects: Project[] = [
   {
-    name: "Zinq",
-    type: "Sistema Web",
+    name: "BR Códigos",
+    type: "Plataforma E-commerce / Automação",
     status: "Publicado",
-    desc: "Plataforma web focada em automação e gestão.",
+    desc: "Plataforma especializada em fornecimento rápido de códigos de barras EAN13 e DUN14 sem burocracia.",
+    images: ["/images/projetos/brcodigos.png"],
+    details: {
+      about:
+        "Plataforma digital integrada para compra e emissão automatizada de códigos de barras personalizados EAN13 e DUN14, com entrega rápida e pagamento único.",
+      impact:
+        "Automatizou o processo de vendas e entrega de códigos digitais, eliminando burocracias e fichas cadastrais para os clientes.",
+      results:
+        "Atendimento eficiente com entrega automatizada em até 24h e emissão integrada de certificados e recibos.",
+    },
+    link: "https://brcodigos.com.br/",
+    tags: ["E-commerce", "Automação", "Plataforma Web"],
+    segment: "ecommerce",
+  },
+  {
+    name: "Zinq",
+    type: "Sistema Web / SaaS",
+    status: "Publicado",
+    desc: "Plataforma web focada em automação, agendamento e gestão.",
     images: [
       "/images/projetos/zinqdash.png",
       "/images/projetos/zinqchat.png",
@@ -56,7 +87,7 @@ const projects: Project[] = [
     name: "Zolve",
     type: "Sistema / Plataforma",
     status: "Em produção",
-    desc: "Sistema robusto com foco em escalabilidade.",
+    desc: "Sistema robusto com foco em escalabilidade e propostas.",
     images: [
       "/images/projetos/zolve.png",
       "/images/projetos/zolvechave.png",
@@ -118,24 +149,7 @@ const projects: Project[] = [
     },
     link: "https://mrsauce.com.br/",
     tags: ["E-commerce", "Loja Virtual", "UI"],
-    segment: "consultoria",
-  },
-  {
-    name: "Publibox",
-    type: "Sistema / Marketing",
-    status: "Publicado",
-    desc: "Plataforma para gestão e divulgação de conteúdos.",
-    details: {
-      about:
-        "Sistema voltado para criação, organização e distribuição de conteúdos de forma estratégica.",
-      impact:
-        "Facilitou a gestão de campanhas e padronizou a comunicação digital.",
-      results:
-        "Maior eficiência no fluxo de publicação e controle de ações de marketing.",
-    },
-    link: "#",
-    tags: ["Marketing", "Automação"],
-    segment: "financeiro",
+    segment: "ecommerce",
   },
   {
     name: "Plane IT",
@@ -164,7 +178,7 @@ const projects: Project[] = [
     images: [
       "/images/projetos/letika.png",
       "/images/projetos/letikaabout.png",
-      "images/projetos/letikacta.png",
+      "/images/projetos/letikacta.png",
     ],
     details: {
       about:
@@ -235,36 +249,16 @@ const projects: Project[] = [
   },
 ];
 
-const segmentStyles: Record<
-  Segment,
-  {
-    gradient: string;
-    accent: string;
-  }
-> = {
+const segmentStyles: Record<Segment, { accent: string }> = {
   financeiro: {
-    gradient: "from-emerald-500/25 via-emerald-500/10 to-transparent",
-    accent: "bg-emerald-500/30",
+    accent: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
   },
-  saude: {
-    gradient: "from-sky-500/25 via-sky-500/10 to-transparent",
-    accent: "bg-sky-500/30",
-  },
-  educacao: {
-    gradient: "from-violet-500/25 via-violet-500/10 to-transparent",
-    accent: "bg-violet-500/30",
-  },
-  tech: {
-    gradient: "from-primary/30 via-primary/10 to-transparent",
-    accent: "bg-primary/30",
-  },
-  consultoria: {
-    gradient: "from-primary/30 via-primary/10 to-transparent",
-    accent: "bg-primary/30",
-  },
+  saude: { accent: "bg-sky-500/20 text-sky-400 border-sky-500/30" },
+  educacao: { accent: "bg-violet-500/20 text-violet-400 border-violet-500/30" },
+  tech: { accent: "bg-primary/20 text-primary border-primary/30" },
+  consultoria: { accent: "bg-primary/20 text-primary border-primary/30" },
   ecommerce: {
-    gradient: "from-orange-500/25 via-orange-500/10 to-transparent",
-    accent: "bg-orange-500/30",
+    accent: "bg-orange-500/20 text-orange-400 border-orange-500/30",
   },
 };
 
@@ -280,43 +274,18 @@ const ProjectCarousel = ({
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Autoplay apenas se tiver mais de uma imagem
   useEffect(() => {
     if (!images || images.length <= 1) return;
-
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length);
-    }, 4000); // Troca a cada 4 segundos
-
+    }, 4500);
     return () => clearInterval(timer);
   }, [images]);
 
   const hasImages = images && images.length > 0;
 
   return (
-    <div
-      className={`
-        relative w-full aspect-video overflow-hidden bg-cover bg-center
-        ${!hasImages ? `bg-gradient-to-br ${segmentStyles[segment].gradient}` : "bg-black"}
-      `}
-    >
-      {/* Fallback caso não haja imagens */}
-      {!hasImages && (
-        <>
-          <div className="absolute inset-0 opacity-30">
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:24px_24px]" />
-          </div>
-          <div className="absolute bottom-4 left-4 flex gap-2">
-            <div
-              className={`w-10 h-6 rounded-md ${segmentStyles[segment].accent}`}
-            />
-            <div className="w-14 h-6 rounded-md bg-white/20" />
-            <div className="w-8 h-6 rounded-md bg-white/10" />
-          </div>
-        </>
-      )}
-
-      {/* Renderização das Imagens */}
+    <div className="relative w-full aspect-video overflow-hidden bg-surface rounded-t-[2rem]">
       {hasImages && (
         <AnimatePresence initial={false}>
           <motion.img
@@ -327,29 +296,29 @@ const ProjectCarousel = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.6, ease: "easeInOut" }}
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover object-top"
           />
         </AnimatePresence>
       )}
 
-      {/* Overlay leve para destacar status e navegação */}
-      {hasImages && <div className="absolute inset-0 bg-black/10" />}
+      {/* Overlay sutil */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none" />
 
-      {/* Status */}
-      <span
-        className="
-          absolute top-4 right-4 z-10
-          text-xs font-medium
-          px-3 py-1 rounded-full
-          bg-background/80 backdrop-blur
-        "
-      >
+      {/* Status Badge */}
+      <span className="absolute top-4 right-4 z-10 text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-background/80 border border-white/10 backdrop-blur-md text-textPrimary">
         {status}
+      </span>
+
+      {/* Segment Badge */}
+      <span
+        className={`absolute top-4 left-4 z-10 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border backdrop-blur-md ${segmentStyles[segment].accent}`}
+      >
+        {segment}
       </span>
 
       {/* Controles do Carrossel (Bolinhas) */}
       {hasImages && images.length > 1 && (
-        <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10">
+        <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-1.5 z-10">
           {images.map((_, idx) => (
             <button
               key={idx}
@@ -357,10 +326,11 @@ const ProjectCarousel = ({
                 e.preventDefault();
                 setCurrentIndex(idx);
               }}
-              className={`
-                h-1.5 rounded-full transition-all duration-300
-                ${idx === currentIndex ? "w-4 bg-white" : "w-1.5 bg-white/50 hover:bg-white/80"}
-              `}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                idx === currentIndex
+                  ? "w-5 bg-white"
+                  : "w-1.5 bg-white/40 hover:bg-white/80"
+              }`}
               aria-label={`Ir para imagem ${idx + 1}`}
             />
           ))}
@@ -379,160 +349,158 @@ export default function Portfolio() {
   };
 
   return (
-    <section className="py-32 bg-background">
-      <div className="max-w-7xl mx-auto px-4">
-        {/* ================= HERO ================= */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-3xl mb-20"
-        >
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Projetos que viraram resultado
-          </h1>
-          <p className="text-textSecondary text-lg">
-            Cada projeto é construído com estratégia, método e foco total em
-            resultado real.
-          </p>
-        </motion.div>
+    <main className="bg-background overflow-hidden">
+      <section className="py-24 sm:py-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          {/* ================= HERO ================= */}
+          <motion.div
+            variants={fadeUpVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="max-w-3xl mb-16 sm:mb-20"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-surface/85 border border-border mb-6 backdrop-blur-md">
+              <Sparkles size={14} className="text-primary" />
+              <span className="text-xs font-semibold uppercase tracking-widest text-textSecondary">
+                Portfólio de Soluções
+              </span>
+            </div>
 
-        {/* ================= GRID ================= */}
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project, i) => (
-            <motion.article
-              key={i}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.06 }}
-              whileHover={{ y: -10 }}
-              className="
-                group relative flex flex-col overflow-hidden rounded-3xl
-                bg-surface/80 backdrop-blur
-                shadow-[0_20px_50px_-20px_rgba(0,0,0,0.25)]
-                transition-all border border-transparent hover:border-primary/20
-              "
-            >
-              {/* ===== TOPO VISUAL / CARROSSEL ===== */}
-              <ProjectCarousel
-                images={project.images}
-                status={project.status}
-                segment={project.segment}
-              />
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-textPrimary tracking-tight leading-[1.1] mb-6">
+              Projetos reais que geram{" "}
+              <span className="text-primary">resultados sólidos.</span>
+            </h1>
 
-              {/* ===== CONTEÚDO ===== */}
-              <div className="relative z-10 p-6 flex flex-col flex-1">
-                <div className="flex items-center gap-3 mb-4">
-                  <FolderKanban className="text-primary" size={20} />
-                  <span className="text-xs uppercase tracking-wide text-textSecondary">
-                    {project.type}
-                  </span>
-                </div>
+            <p className="text-textSecondary text-lg sm:text-xl font-light leading-relaxed">
+              Cada software, e-commerce ou sistema foi construído com
+              arquitetura robusta, método rigoroso e foco absoluto na conversão
+              do negócio.
+            </p>
+          </motion.div>
 
-                <h3 className="text-xl font-bold mb-3 leading-tight">
-                  {project.name}
-                </h3>
+          {/* ================= GRID DE PROJETOS ================= */}
+          <div className="grid gap-8 lg:grid-cols-2 xl:grid-cols-3">
+            {projects.map((project, i) => (
+              <motion.article
+                key={i}
+                variants={fadeUpVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                whileHover={{ y: -6 }}
+                className="group relative flex flex-col overflow-hidden rounded-[2rem] border border-border/60 bg-surface/40 backdrop-blur-xl transition-all duration-500 hover:border-primary/40 hover:bg-surface/80 hover:shadow-2xl hover:shadow-primary/5"
+              >
+                {/* Linha topo brilhante no hover */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 z-20" />
 
-                <p className="text-sm text-textSecondary mb-6 leading-relaxed">
-                  {project.desc}
-                </p>
+                {/* ===== TOPO CARROSSEL ===== */}
+                <ProjectCarousel
+                  images={project.images}
+                  status={project.status}
+                  segment={project.segment}
+                />
 
-                {/* TAGS */}
-                <div className="flex flex-wrap gap-2 mb-8">
-                  {project.tags.map((tag, idx) => (
-                    <span
-                      key={idx}
-                      className="
-                        text-xs px-3 py-1 rounded-full
-                        bg-background/60 border border-border
-                      "
-                    >
-                      {tag}
+                {/* ===== CONTEÚDO ===== */}
+                <div className="relative z-15 p-6 sm:p-8 flex flex-col flex-1">
+                  <div className="flex items-center gap-2 mb-3">
+                    <FolderKanban className="text-primary" size={16} />
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-textSecondary">
+                      {project.type}
                     </span>
-                  ))}
-                </div>
-
-                <button
-                  onClick={() => toggle(i)}
-                  className="
-                    text-sm font-medium text-textSecondary
-                    hover:text-primary transition mb-4 text-left
-                  "
-                >
-                  {openIndex === i ? "Ocultar detalhes" : "Ver detalhes"}
-                </button>
-
-                <motion.div
-                  initial={false}
-                  animate={{
-                    height: openIndex === i ? "auto" : 0,
-                    opacity: openIndex === i ? 1 : 0,
-                  }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                  className="overflow-hidden"
-                >
-                  <div className="text-sm text-textSecondary space-y-3 mb-6">
-                    <p>
-                      <strong className="text-text">Sobre:</strong>{" "}
-                      {project.details.about}
-                    </p>
-                    <p>
-                      <strong className="text-text">Impacto:</strong>{" "}
-                      {project.details.impact}
-                    </p>
-                    {project.details.results && (
-                      <p>
-                        <strong className="text-text">Resultados:</strong>{" "}
-                        {project.details.results}
-                      </p>
-                    )}
-                    <p className="text-xs opacity-70 mt-4">
-                      Observação: a hospedagem e disponibilidade do site são de
-                      responsabilidade do cliente. Eventuais indisponibilidades
-                      podem ocorrer por fatores externos.
-                    </p>
                   </div>
-                </motion.div>
 
-                {/* CTA */}
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="
-                    mt-auto inline-flex items-center justify-center gap-2
-                    px-4 py-2 rounded-xl
-                    text-sm font-semibold
-                    text-primary
-                    border border-primary/30
-                    bg-primary/5
-                    hover:bg-primary/10
-                    hover:border-primary/50
-                    transition-all
-                  "
-                >
-                  Ver projeto
-                  <ExternalLink size={14} />
-                </a>
-              </div>
+                  <h3 className="text-2xl font-bold text-textPrimary mb-3 tracking-tight">
+                    {project.name}
+                  </h3>
 
-              {/* Linha animada inferior */}
-              <div
-                className="
-                  absolute bottom-0 left-0 h-[2px] w-0
-                  bg-gradient-to-r from-primary to-transparent
-                  group-hover:w-full transition-all duration-500
-                "
-              />
-            </motion.article>
-          ))}
+                  <p className="text-textSecondary text-sm sm:text-base font-light leading-relaxed mb-6">
+                    {project.desc}
+                  </p>
+
+                  {/* TAGS */}
+                  <div className="flex flex-wrap gap-1.5 mb-6">
+                    {project.tags.map((tag, idx) => (
+                      <span
+                        key={idx}
+                        className="text-[11px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full border border-border/60 bg-background/50 text-textSecondary"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Botão de Detalhes */}
+                  <button
+                    onClick={() => toggle(i)}
+                    className="text-xs font-bold uppercase tracking-wider text-primary hover:text-textPrimary transition mb-6 text-left flex items-center gap-1.5 w-fit"
+                  >
+                    <span>
+                      {openIndex === i
+                        ? "Ocultar detalhes"
+                        : "Ver detalhes técnicos"}
+                    </span>
+                  </button>
+
+                  {/* Detalhes Expansíveis */}
+                  <AnimatePresence>
+                    {openIndex === i && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="overflow-hidden mb-6"
+                      >
+                        <div className="text-xs sm:text-sm text-textSecondary space-y-3 p-4 rounded-2xl bg-background/50 border border-border/50 font-light">
+                          <p>
+                            <strong className="text-textPrimary font-semibold">
+                              Sobre:
+                            </strong>{" "}
+                            {project.details.about}
+                          </p>
+                          <p>
+                            <strong className="text-textPrimary font-semibold">
+                              Impacto:
+                            </strong>{" "}
+                            {project.details.impact}
+                          </p>
+                          {project.details.results && (
+                            <p>
+                              <strong className="text-textPrimary font-semibold">
+                                Resultados:
+                              </strong>{" "}
+                              {project.details.results}
+                            </p>
+                          )}
+                          <p className="text-[10px] text-textSecondary/60 pt-2 border-t border-border/30">
+                            *Nota: A disponibilidade da aplicação online é de
+                            responsabilidade do cliente proprietário do domínio.
+                          </p>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  {/* CTA Link */}
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-auto inline-flex items-center justify-center gap-2 w-full px-5 py-3 rounded-xl text-sm font-bold text-textPrimary bg-surface border border-border transition-all hover:bg-primary hover:border-primary hover:text-white shadow-sm"
+                  >
+                    Acessar projeto vivo
+                    <ExternalLink size={16} />
+                  </a>
+                </div>
+              </motion.article>
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
 
       {/* ================= CTA FINAL ================= */}
       <FinalCTA />
-    </section>
+    </main>
   );
 }
